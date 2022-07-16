@@ -1,5 +1,5 @@
-const express=requiere('express')
-const{Router}=requiere ('express');
+const express=require('express')
+const{Router}=require ('express');
 const router=Router();
 const axios = require("axios");
 const {Pokemon, Type} = require("../db.js");
@@ -35,7 +35,7 @@ router.get('/',async (req, res, next) => {
                 const urls = [];
                 data.results?.map(p => urls.push(p.url));
                 
-                const  pokemons = [];
+                let  pokemons = [];
                 for (let url of urls) {
                     let {data} = await axios.get(url);
                     pokemons.push(crearObj(data));
@@ -88,9 +88,10 @@ router.get ( '/:id' , async (req, res, next) => {
                     id, {
                     include: {
                         model: Type,
-                        attributes: ["name"]
+                        atributes:["name"]
+                      }   
                     }
-                });
+                );
                 return res.json(data);
             } catch (error) {
                 return res.status(404).json({msj: "No se encuentra el pokemon solicitado"});
@@ -108,17 +109,22 @@ router.get ( '/:id' , async (req, res, next) => {
     
    
  router.post("/", async (req, res, next) => {
-        let {name, hp, attack, defense, speed, height, weight, image, type} = req.body;
+        let {name, hp, attack, defense, speed, height, weight, image, types} = req.body;
         if (!image || image === undefined || image === "" || !/(https?:\/\/.*\.(?:png|jpg|jpeg))/i.test(image)) {
             image = "https://camo.githubusercontent.com/5d1fe59c3f0e4cfb5480bb8d8b1eb3ba58906acef846904fde8afcc5f773adbb/68747470733a2f2f692e696d6775722e636f6d2f583962314b75362e706e67";
         }
-        if (!type || type.length === 0) type = [10001];
+        if (!types || types.length === 0) types = [10001];  //puedo crear tipos no existentes????
         try {
             name = name.toLowerCase();
-            let pokemon = {name, hp, attack, defense, speed, height, weight, image, type};
-            let newPoke = await Pokemon.create(pokemon);
-            await newPoke.addType(type);
-            return res.json(newPoke);
+           const pokemonCreate = await Pokemon.create({name, hp, attack, defense, speed, height, weight, image});
+            types.map(async idType=>{
+                const foundType=await Type.findAll({
+                    where:{id:idType},
+                })
+                if (foundType) pokemonCreate.addType(foundType)
+            })
+
+            return res.json(pokemonCreate);
         } catch (error) {
             next(error);
         }
@@ -157,4 +163,4 @@ router.delete("/:id" , async (req, res, next) => {
     }
 )
 
-modules.exports=router;
+module.exports=router;

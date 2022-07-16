@@ -1,5 +1,5 @@
-const express=requiere('express')
-const{Router}=requiere ('express');
+const express=require('express')
+const{Router}=require ('express');
 const router=Router();
 const axios = require("axios");
 const {Type} = require("../db.js");
@@ -32,3 +32,5 @@ router.get('/', async (req, res, next) => {
                 return res.json(tiposDB);
             }
     })
+
+module.exports=router;

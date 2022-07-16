@@ -3,9 +3,8 @@ const { DataTypes } = require('sequelize');
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
   sequelize.define('pokemon', {
-    id: { //data.id
+    idPokemon: { //data.id
       type: DataTypes.UUID,
-      allowNull: false,
       primaryKey: true,
       defaultValue: DataTypes.UUIDV4
     },
