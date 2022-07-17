@@ -36,29 +36,35 @@ return(
     <div>
        
 
-     <Link to= '/pokemons'>Pokemons</Link> 
+     <Link to='/home'>Pokemons</Link> 
       <h1>POKEMONS </h1>   
       
       <button onClick={e=>handlerlClick(e)}>
           Volver a cargar 
       </button>
      <div>
-      <Paginado
-            pokemonsPerPage={pokemonsPerPage}
-            allPokemons={allPokemons.length}
-            paginado={paginado}
-       />
+          <Paginado
+                pokemonsPerPage={pokemonsPerPage}
+                allPokemons={allPokemons.length}
+                paginado={paginado}
+          />
 
-     { currentPokemons?.map((e) => {
-          return (
-            <div key={e.idPokemon}>
-              <Link to={"/home/"+ e.idPokemon }>
-                <Card name={e.name} image={e.image} types={e.types} />
-              </Link>
-            </div>
-        )
-        })
-             }
+        {currentPokemons?.map((e) => {
+              return (
+                <div key={e.id}>                
+                  <Link to={`/home/${e.id} `}>
+                    <Card 
+                    
+                    idPokemon={e.id} 
+                    name={e.name} 
+                    image={e.image} 
+                    types={e.createdInDB ? e.types?.map(t => t.name) : e.types} />
+
+                  </Link>
+                </div>
+            )
+            })
+                }
      </div>
     </div>
 )

@@ -15,19 +15,29 @@ export const DELETE_POKE = "DELETE_POKE";
 
 export function getAllPokemons() {
     return async function(dispatch) {
-        const {data}= await axios.get('http://localhost:3001/pokemons');
+        try {
+          const {data}= await axios.get('http://localhost:3001/pokemons');
         return dispatch({type: GET_ALL_POKEMONS, payload: data
-        })
+        })   
+        } catch (error) {
+            console.log('Error en getAllPokemons '+ error)
+        }
+       
         
     }
 }
 
 export function getPokemonById(id) {
-    return async function (dispatch) {
+    try {
+       return async function (dispatch) {
         const {data}= await axios.get(`http://localhost:3001/pokemons/${id}`)
         return dispatch({type: GET_POKEMON_BY_ID, payload: data})
         
+    }  
+    } catch (error) {
+        console.log('Error en getPokemonById '+ error)
     }
+   
 }
 
 export function getPokemonByName(name) {
@@ -39,6 +49,7 @@ export function getPokemonByName(name) {
 }
 
 export function getAllTypes() {
+    
     return function(dispatch) {
         return fetch(`http://localhost:3001/types`)
         .then(r => r.json())

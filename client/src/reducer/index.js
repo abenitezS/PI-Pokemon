@@ -1,18 +1,7 @@
 import {
-    GET_ALL_POKEMONS,
-    GET_POKEMON_BY_ID,
-    GET_POKEMON_BY_NAME,
-    GET_ALL_TYPES,
-    CREATE_POKEMON,
-    CLEAN_CACHE,
-    ORDER_ALPHABET,
-    FILTER_ORIGEN,
-    CLEAN_CACHE_ALL,
-    ORDER_ATTACK,
-    FILTER_TYPE,
-    SET_CURRENT_PAGE,
-    DELETE_POKE
-} from "../components/actions/index.js"
+    GET_ALL_POKEMONS,    GET_POKEMON_BY_ID,    GET_POKEMON_BY_NAME,    GET_ALL_TYPES,    CREATE_POKEMON,    CLEAN_CACHE,    ORDER_ALPHABET,
+    FILTER_ORIGEN,    CLEAN_CACHE_ALL,    ORDER_ATTACK,    FILTER_TYPE,    SET_CURRENT_PAGE,    DELETE_POKE} from "../components/actions/index.js"
+
 const initialState = {
     pokemons: [],
     pokemonsFiltrados: [],
@@ -30,15 +19,7 @@ const rootReducer = (state = initialState, action) => {
             page: 1
         }
         case GET_POKEMON_BY_ID: 
-        if (action.payload.msj) {
-            let error = {error: "No se encontró el pokémon"}
             return {
-                ...state,
-                pokemon: error,
-                page: 1
-            }
-        }
-        return {
             ...state,
             pokemon: action.payload,
             page: 1
