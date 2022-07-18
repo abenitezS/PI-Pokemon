@@ -2,7 +2,7 @@ import React from 'react'
 import {useEffect} from 'react'
 import {Link, useParams} from "react-router-dom"
 import {useDispatch,useSelector} from "react-redux"
-import { getPokemonById } from './actions/index'
+import { getPokemonById,cleanCache } from './actions/index'
 import  './Card.css'
 
 export default function CardDetails(props){
@@ -18,6 +18,10 @@ export default function CardDetails(props){
     const myPokemon=useSelector(state=>state.pokemon)
 console.log(myPokemon)
 
+let cleanAndBack = () => {
+    
+    dispatch(cleanCache());
+  };
 let i=0;
 return(
     
@@ -46,7 +50,7 @@ return(
           </div>    
          }
          <Link to={`/home`}>
-            <button>Volver</button>
+            <button onClick={cleanAndBack}>Volver</button>
         </Link>
         
     </div>

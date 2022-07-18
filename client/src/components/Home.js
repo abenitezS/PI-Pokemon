@@ -48,7 +48,7 @@ return(
                 allPokemons={allPokemons.length}
                 paginado={paginado}
           />
-
+            <SearchBar/>
         {currentPokemons?.map((e) => {
               return (
                 <div key={e.id}>                

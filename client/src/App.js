@@ -11,13 +11,13 @@ function App() {
     <div className='App'>
    
     <Switch>
-      <Route path="/home/:id" >
-        <CardsDetails/>
-      </Route>
        
+      <Route  path="/home/:id" component={CardsDetails}  />
+
       <Route exact path="/" component={LandingPage}/>
       
-      <Route path="/home" component={Home}/> 
+      <Route  path="/home" component={Home}/>  
+
      </Switch>
 
     
