@@ -7,11 +7,9 @@ export const CREATE_POKEMON = "CREATE_POKEMON";
 export const CLEAN_CACHE = "CLEAN_CACHE";
 export const CLEAN_CACHE_ALL = "CLEAN_CACHE_ALL";
 export const ORDER_ALPHABET = "ORDER_ALPHABET";
-export const FILTER_ORIGEN = "FILTER_ORIGEN";
-export const ORDER_ATTACK = "ORDER_ATTACK";
 export const FILTER_TYPE = "FILTER_TYPE";
-export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
-export const DELETE_POKE = "DELETE_POKE";
+
+
 
 export function getAllPokemons() {
     return async function(dispatch) {
@@ -22,8 +20,6 @@ export function getAllPokemons() {
         } catch (error) {
             console.log('Error en getAllPokemons '+ error)
         }
-       
-        
     }
 }
 
@@ -50,11 +46,10 @@ export function getPokemonByName(name) {
 
 export function getAllTypes() {
     
-    return function(dispatch) {
-        return fetch(`http://localhost:3001/types`)
-        .then(r => r.json())
-        .then(data => dispatch({type: GET_ALL_TYPES, payload: data}))
-        .catch(e => console.log(e))
+    return async function(dispatch) {
+        const {data}= await axios.get(`http://localhost:3001/types`)
+        return dispatch({type: GET_ALL_TYPES, payload: data})
+        
     }
 }
 
@@ -69,16 +64,6 @@ export function createPokemon(values) {
     }
 };
 
-export function deletePokemon(id) {
-    return async function(dispatch) {
-        try {
-            await axios.delete(`http://localhost:3001/pokemons/${id}`);
-            dispatch({type: DELETE_POKE});
-        } catch (error) {
-            console.log(error)
-        }
-    }
-}
 
 export const cleanCache = () => {
     return {type: CLEAN_CACHE}
@@ -93,18 +78,8 @@ export const orderByAlphabet = (payload) => {
     return {type: ORDER_ALPHABET, payload}
 }
 
-export const filterByOrigen = (payload) => {
-    return {type: FILTER_ORIGEN, payload}
-}
-
-export const orderByAttack = (payload) => {
-    return {type: ORDER_ATTACK, payload}
-}
-
 export const filterByType = (payload) => {
     return {type: FILTER_TYPE, payload}
 }
 
-export const setCurrentPage = (payload) => {
-    return {type: SET_CURRENT_PAGE, payload}
-}
+
