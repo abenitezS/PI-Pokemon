@@ -30,7 +30,7 @@ export default function CrearPokemon() {
 
 
     useEffect(() => {
-        if (pokemons.length < 2) dispatch(getAllPokemons());
+        dispatch(getAllPokemons());
         dispatch(getAllTypes());
     }, [dispatch]);
 
@@ -114,7 +114,7 @@ export default function CrearPokemon() {
   return (
       <div>
         <button onClick={() => history.push("/pokemons")} className="buttonBack"> Volver</button>
-        <form className='formCrear'>
+        <form className='formCrear' onSubmit={(e)=> handleSubmit(e)}>
             <div>
                 {errors.name && <p className='error'>{errors.name}</p>}
                 <label>Nombre: </label>
@@ -189,7 +189,7 @@ export default function CrearPokemon() {
             </div>
             <br/>
             <div>
-                <button disabled={!input.name || Object.keys(errors).length > 0} type="submit" onClick={(e) => handleSubmit(e)} className="buttonCrear">Crear</button>
+                <button disabled={!input.name || Object.keys(errors).length > 0} type="submit"  className="buttonCrear">Crear</button>
             </div>
         </form>
     </div>

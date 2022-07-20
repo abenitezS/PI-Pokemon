@@ -6,9 +6,11 @@ import {
     CREATE_POKEMON,    
     CLEAN_CACHE,    
     ORDER_ALPHABET,
+    ORDER_ATTACK,
     CLEAN_CACHE_ALL,     
     FILTER_TYPE, 
-    FILTER_CREATED_API     } from "../components/actions/index.js"
+    FILTER_CREATED_API,
+     } from "../components/actions/index.js"
 
 const initialState = {
     pokemons: [],
@@ -71,15 +73,15 @@ const rootReducer = (state = initialState, action) => {
            
         }
         case ORDER_ALPHABET:
-            let pokesAlpha;
+            let pokesAlpha=state.pokemonsall;
             if (action.payload === "asc") {
-                pokesAlpha = state.pokemonsall.sort((a, b) => {
+                pokesAlpha = pokesAlpha.sort((a, b) => {
                     if (a.name > b.name) return 1;
                     if (b.name > a.name) return -1;
                     return 0;
                 });
             } else {
-                pokesAlpha = state.pokemonsall.sort((a, b) => {
+                pokesAlpha = pokesAlpha.sort((a, b) => {
                     if (a.name > b.name) return -1;
                     if (b.name > a.name) return 1;
                     return 0;
@@ -91,6 +93,30 @@ const rootReducer = (state = initialState, action) => {
                 pokemons: pokesAlpha,
                 
             }
+            case ORDER_ATTACK:
+                let pokesAttack=state.pokemonsall;
+                if (action.payload === "asc") {
+                    pokesAttack = pokesAttack.sort((a, b) => {
+                        if (a.attack > b.attack) return 1;
+                        if (b.attack > a.attack) return -1;
+                        return 0;
+                    });
+                } else {
+                    pokesAttack = pokesAttack.sort((a, b) => {
+                        if (a.attack > b.attack) return -1;
+                        if (b.attack > a.attack) return 1;
+                        return 0;
+                    });
+                }
+                // console.log(pokesAttack)
+                return {
+                    ...state,
+                    pokemons: pokesAttack,
+                    
+                }
+
+
+
         case FILTER_TYPE:
         
             let pokesType = state.pokemonsall.filter(p => {
@@ -118,7 +144,7 @@ const rootReducer = (state = initialState, action) => {
         else {
              pokesOrigen =state.pokemonsall.filter(p=>!p.hasOwnProperty("createdInDB"))
         }
-        console.log(pokesOrigen);
+        //console.log(pokesOrigen);
         if (pokesOrigen.length === 0) {
             alert(`No hay pokémons de tipo ${action.payload}`);
             return {

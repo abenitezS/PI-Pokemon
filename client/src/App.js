@@ -8,24 +8,22 @@ import CardsDetails from '../src/components/CardsDetails';
 function App() {
   return (
    <BrowserRouter>
-    <div className='App'>
+   <div className='App'>
    
-    <Switch>
-       
+    <Switch >
+      
       <Route  path="/home/:id" component={CardsDetails}  />
 
       <Route exact path="/" component={LandingPage}/>
       
       <Route  path="/home" component={Home}/>  
 
-      <Route path='/Pokemon' component={CreatePokemon} />
-
+      <Route path='/Pokemon' component={CreatePokemon} />    
+      
      </Switch>
 
-    
-
-   
     </div>
+    
     </BrowserRouter>     
   );
 }

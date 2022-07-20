@@ -1,14 +1,14 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import {filterByCreatedOrAPI, filterByType, getAllPokemons,getAllTypes,orderByAlphabet} from '../components/actions/index'
+import {filterByCreatedOrAPI, filterByType, getAllPokemons,getAllTypes,orderByAlphabet, orderByAttack} from '../components/actions/index'
 import {Link} from 'react-router-dom'
 import Card from '../components/Card'
 import Paginado from './Paginado'
 import SearchBar from './SearchBar'
 
 export default function Home() {
-  let [filtrados, setFiltrados] = useState();
+  let [, setFiltrados] = useState();
     const dispatch = useDispatch()
 
 const allPokemons =useSelector(state=>state.pokemons)
@@ -19,7 +19,7 @@ console.log(alltypes )
 
 //estados para el paginado 
 const[currentPage,setCurrentPage]=useState(1)  // mi pagina actual que arranca en 1
-const[pokemonsPerPage,setPokemonsPerPage]=useState(12) // pokemons por pagina siempre seran 12
+const[pokemonsPerPage,]=useState(12) // pokemons por pagina siempre seran 12
 const indexOfLastPokemons=currentPage * pokemonsPerPage //12
 const indexOfFirstPokemons= indexOfLastPokemons - pokemonsPerPage //0
 const currentPokemons=allPokemons.slice(indexOfFirstPokemons,indexOfLastPokemons)// me da los pokemons  para mi pagina actual
@@ -45,12 +45,12 @@ function handleClick(e){
 function  handlefilterType(e){
     
   dispatch(filterByType(e.target.value));
-    setFiltrados(`filtrado ${e.target.value}`);
+    setFiltrados(`filtrado por Tipo ${e.target.value}`);
   setCurrentPage(1);
   }
 function handelCreatedOrExisted(e){
   dispatch(filterByCreatedOrAPI(e.target.value));
-  setFiltrados(`filtrado ${e.target.value}`);
+  setFiltrados(`filtrado por origen ${e.target.value}`);
   setCurrentPage(1);
 }
  
@@ -58,7 +58,14 @@ function handleOrderByName(e){
   e.preventDefault()
   dispatch(orderByAlphabet(e.target.value));
   setCurrentPage(1);
-  setFiltrados(`Ordenado ${e.target.value}`) //me sirve para que modifique el estado local y se renderice
+  setFiltrados(`Ordenado Alfabetico ${e.target.value}`) //me sirve para que modifique el estado local y se renderice
+}
+
+function handleOrderByAttack(e){
+  e.preventDefault()
+  dispatch(orderByAttack(e.target.value));
+  setCurrentPage(1);
+  setFiltrados(`Ordenado Alfabetico ${e.target.value}`) //me sirve para que modifique el estado local y se renderice
 }
 
 return(
@@ -94,6 +101,14 @@ return(
             <option value="asc">Aa-Zz</option>
             <option value="desc">Zz-Aa</option>
           </select>
+
+
+        <select onChange={e => handleOrderByAttack(e)}>
+          <option>Orden por Ataque</option>
+          <option value="asc">Menor a mayor ataque </option>
+          <option value="desc">Mayor a menor ataque </option>
+        </select>
+
       </div>
      <div>       
  

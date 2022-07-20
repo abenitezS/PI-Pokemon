@@ -9,6 +9,7 @@ export const CLEAN_CACHE_ALL = "CLEAN_CACHE_ALL";
 export const ORDER_ALPHABET = "ORDER_ALPHABET";
 export const FILTER_TYPE = "FILTER_TYPE";
 export const FILTER_CREATED_API= "FILTER_CREATED_API";
+export const ORDER_ATTACK='ORDER_ATTACK'
 
 
 export function getAllPokemons() {
@@ -24,16 +25,15 @@ export function getAllPokemons() {
 }
 
 export function getPokemonById(id) {
+   return async function (dispatch) {  
     try {
-       return async function (dispatch) {
         const {data}= await axios.get(`http://localhost:3001/pokemons/${id}`)
-        return dispatch({type: GET_POKEMON_BY_ID, payload: data})
-        
-    }  
-    } catch (error) {
+        return dispatch({type: GET_POKEMON_BY_ID, payload: data})    
+    } 
+    catch (error) {
         console.log('Error en getPokemonById '+ error)
-    }
-   
+    } 
+}
 }
 
 export function getPokemonByName(name) {
@@ -77,6 +77,11 @@ export const cleanCacheAll = () => {
 export const orderByAlphabet = (payload) => {
     return {type: ORDER_ALPHABET, payload}
 }
+
+export const orderByAttack = (payload) => {
+    return {type: ORDER_ATTACK, payload}
+}
+
 
 export const filterByType = (payload) => {
     return {type: FILTER_TYPE, payload}

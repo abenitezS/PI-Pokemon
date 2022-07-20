@@ -1,11 +1,11 @@
 import React from 'react'
-import {useEffect} from 'react'
 import {Link, useParams} from "react-router-dom"
 import {useDispatch,useSelector} from "react-redux"
 import { getPokemonById,cleanCache } from './actions/index'
 import  './Card.css'
 
-export default function CardDetails(props){
+
+export default function CardDetail(){
     console.log(useParams())
     const {id} =useParams()
 
@@ -14,7 +14,7 @@ export default function CardDetails(props){
     React.useEffect( ()=>{
         dispatch(getPokemonById(id));
 
-    },[dispatch])
+    },[dispatch,id])
     const myPokemon=useSelector(state=>state.pokemon)
 console.log(myPokemon)
 
@@ -36,7 +36,7 @@ return(
            
              {myPokemon.types?.map((t) => {
                i++;
-              return <h5 key={i}  className="typesCard"> {t.name} </h5>;
+              return <h5 key={i}  className="typesCard"> {myPokemon.createdInDB ? t.name : t} </h5>;
                 })
                
             }
