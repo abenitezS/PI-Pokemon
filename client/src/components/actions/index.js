@@ -8,7 +8,7 @@ export const CLEAN_CACHE = "CLEAN_CACHE";
 export const CLEAN_CACHE_ALL = "CLEAN_CACHE_ALL";
 export const ORDER_ALPHABET = "ORDER_ALPHABET";
 export const FILTER_TYPE = "FILTER_TYPE";
-
+export const FILTER_CREATED_API= "FILTER_CREATED_API";
 
 
 export function getAllPokemons() {
@@ -82,4 +82,7 @@ export const filterByType = (payload) => {
     return {type: FILTER_TYPE, payload}
 }
 
+export const filterByCreatedOrAPI = (payload) => {
+    return {type: FILTER_CREATED_API, payload}
+}
 

@@ -1,14 +1,14 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import {filterByType, getAllPokemons,getAllTypes} from '../components/actions/index'
+import {filterByCreatedOrAPI, filterByType, getAllPokemons,getAllTypes,orderByAlphabet} from '../components/actions/index'
 import {Link} from 'react-router-dom'
 import Card from '../components/Card'
 import Paginado from './Paginado'
 import SearchBar from './SearchBar'
 
 export default function Home() {
-  let [/*filtrados*/, setFiltrados] = useState();
+  let [filtrados, setFiltrados] = useState();
     const dispatch = useDispatch()
 
 const allPokemons =useSelector(state=>state.pokemons)
@@ -44,17 +44,25 @@ function handleClick(e){
 
 function  handlefilterType(e){
     
-    dispatch(filterByType(e.target.value));
-    setFiltrados(e.target.value);
+  dispatch(filterByType(e.target.value));
+    setFiltrados(`filtrado ${e.target.value}`);
   setCurrentPage(1);
   }
-
-           
+function handelCreatedOrExisted(e){
+  dispatch(filterByCreatedOrAPI(e.target.value));
+  setFiltrados(`filtrado ${e.target.value}`);
+  setCurrentPage(1);
+}
+ 
+function handleOrderByName(e){
+  e.preventDefault()
+  dispatch(orderByAlphabet(e.target.value));
+  setCurrentPage(1);
+  setFiltrados(`Ordenado ${e.target.value}`) //me sirve para que modifique el estado local y se renderice
+}
 
 return(
-    <div>
-       
-
+    <div>  
      <Link to='/home'>Pokemons</Link> 
       <h1>POKEMONS </h1>   
       
@@ -75,7 +83,17 @@ return(
             })
           }
           </select>
-
+        <select defaultValue="Creados o Existentes:" name='origen'onChange={e=>handelCreatedOrExisted(e)}>
+          <label> Filtrar por Creados o Existentes</label>
+          <option>Creados o Existentes:</option>
+          <option value="Created">Creados</option>
+          <option value="Existed">Existentes</option>
+        </select>
+        <select onChange={e => handleOrderByName(e)}>
+            <option>Alfabéticamente</option>
+            <option value="asc">Aa-Zz</option>
+            <option value="desc">Zz-Aa</option>
+          </select>
       </div>
      <div>       
  
@@ -84,8 +102,6 @@ return(
                 allPokemons={allPokemons.length}
                 paginado={paginado}
           />
-
-
 
             <SearchBar/>
         {currentPokemons?.map((e) => {

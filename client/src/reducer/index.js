@@ -1,6 +1,14 @@
 import {
-    GET_ALL_POKEMONS,    GET_POKEMON_BY_ID,    GET_POKEMON_BY_NAME,    GET_ALL_TYPES,    CREATE_POKEMON,    CLEAN_CACHE,    ORDER_ALPHABET,
-     CLEAN_CACHE_ALL,     FILTER_TYPE,    SET_CURRENT_PAGE   } from "../components/actions/index.js"
+    GET_ALL_POKEMONS,  
+    GET_POKEMON_BY_ID,   
+    GET_POKEMON_BY_NAME,   
+    GET_ALL_TYPES,    
+    CREATE_POKEMON,    
+    CLEAN_CACHE,    
+    ORDER_ALPHABET,
+    CLEAN_CACHE_ALL,     
+    FILTER_TYPE, 
+    FILTER_CREATED_API     } from "../components/actions/index.js"
 
 const initialState = {
     pokemons: [],
@@ -64,14 +72,14 @@ const rootReducer = (state = initialState, action) => {
         }
         case ORDER_ALPHABET:
             let pokesAlpha;
-            if (action.payload === "az") {
-                pokesAlpha = state.pokemonsFiltrados.sort((a, b) => {
+            if (action.payload === "asc") {
+                pokesAlpha = state.pokemonsall.sort((a, b) => {
                     if (a.name > b.name) return 1;
                     if (b.name > a.name) return -1;
                     return 0;
                 });
             } else {
-                pokesAlpha = state.pokemonsFiltrados.sort((a, b) => {
+                pokesAlpha = state.pokemonsall.sort((a, b) => {
                     if (a.name > b.name) return -1;
                     if (b.name > a.name) return 1;
                     return 0;
@@ -83,7 +91,6 @@ const rootReducer = (state = initialState, action) => {
                 pokemons: pokesAlpha,
                 
             }
-      
         case FILTER_TYPE:
         
             let pokesType = state.pokemonsall.filter(p => {
@@ -103,8 +110,29 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 pokemons: pokesType,
             }
+    case FILTER_CREATED_API:
+        let pokesOrigen=[]
+        if (action.payload==='Created') {
+             pokesOrigen= state.pokemonsall.filter(p=> p.createdInDB)
+        }
+        else {
+             pokesOrigen =state.pokemonsall.filter(p=>!p.hasOwnProperty("createdInDB"))
+        }
+        console.log(pokesOrigen);
+        if (pokesOrigen.length === 0) {
+            alert(`No hay pokémons de tipo ${action.payload}`);
+            return {
+                ...state,
+                
+            }
+        }
+        return {
+            ...state,
+            pokemons: pokesOrigen,
+        }
 
-        default: return state
+            
+     default: return state
     }
 }
 

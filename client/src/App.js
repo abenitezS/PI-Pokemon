@@ -3,7 +3,7 @@ import './App.css';
 import Home from '../../client/src/components/Home.js';
 import {BrowserRouter, Route, Switch } from 'react-router-dom'
 import LandingPage from '../../client/src/components/LandingPage.js';
-import CreateActivity from '../../client/src/components/CreatePokemon';
+import CreatePokemon from '../../client/src/components/CreatePokemon';
 import CardsDetails from '../src/components/CardsDetails';
 function App() {
   return (
@@ -17,6 +17,8 @@ function App() {
       <Route exact path="/" component={LandingPage}/>
       
       <Route  path="/home" component={Home}/>  
+
+      <Route path='/Pokemon' component={CreatePokemon} />
 
      </Switch>
 
