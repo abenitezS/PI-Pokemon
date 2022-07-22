@@ -9,12 +9,12 @@ function crearObj(data) {
     return {
         id: data.id,
         name: data.name,// 4 a 150 https://hualao.com/es/what-is-the-name-of-the-longest-pokemon.html
-        hp: data.stats[0].base_stat,
+        hp: data.stats[0].base_stat,// 10-200
         attack: data.stats[1].base_stat,//5-190
         defense: data.stats[2].base_stat,//5 a 250
         speed: data.stats[5].base_stat,//5-180
-        height: data.height,//0..15 metros (decimales?)
-        weight: data.weight,///1 a 1000  (decimales?)   https://pokemon.fandom.com/es/wiki/Lista_de_Pok%C3%A9mon_por_peso
+        height: data.height,//0,1..15,0 metros (decimales)
+        weight: data.weight,///0.1 a 1000  (decimales)   https://pokemon.fandom.com/es/wiki/Lista_de_Pok%C3%A9mon_por_peso
         image: data.sprites.other.home.front_default,
         types: data.types.map(t => t.type.name)   //1 o 2 tipos permitidos https://pokemon.fandom.com/es/wiki/Lista_de_Pok%C3%A9mon_por_tipo
     }
@@ -123,6 +123,13 @@ router.get ( '/:id' , async (req, res) => {
             image = "https://camo.githubusercontent.com/5d1fe59c3f0e4cfb5480bb8d8b1eb3ba58906acef846904fde8afcc5f773adbb/68747470733a2f2f692e696d6775722e636f6d2f583962314b75362e706e67";
         }
         if (!types || types.length === 0) types = [10001];  //puedo crear tipos no existentes????
+        
+        if ((!hp)|| (hp==="")) hp=null;
+        if ((!attack)|| (attack==="")) attack=null;
+        if (defense==="") defense=null;
+        if (speed==="") speed=null;
+        if (height==="") height=null;
+        if (weight==="") weight=null;
         try {
             name = name.toLowerCase();
            const pokemonCreate = await Pokemon.create({name, hp, attack, defense, speed, height, weight, image});

@@ -70,7 +70,7 @@ function handleOrderByAttack(e){
 
 return(
     <div>  
-     <Link to='/home'>Pokemons</Link> 
+     <Link to='/pokemon'>Crear Pokemons</Link> 
       <h1>POKEMONS </h1>   
       
       <button onClick={e=>handleClick(e)}>

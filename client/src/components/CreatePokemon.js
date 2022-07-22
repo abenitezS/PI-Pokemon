@@ -11,14 +11,14 @@ import "./CrearPokemon.css";
 export default function CrearPokemon() {
     let [input, setInput] = useState({
         name: "",
-        hp: 1,
-        attack: 1,
-        defense: 1,
-        speed: 1,
-        height: 1,
-        weight: 1,
+        hp: "",
+        attack: "",
+        defense: "",
+        speed: "",
+        height: "",
+        weight: "",
         image: "",
-        type: []
+        types: []
     })
     let [errors, setErrors] = useState({});
 
@@ -55,31 +55,33 @@ export default function CrearPokemon() {
         dispatch(cleanCacheAll());
         setInput({
             name: "",
-            hp: 1,
-            attack: 1,
-            defense: 1,
-            speed: 1,
-            height: 1,
-            weight: 1,
+            hp: "",
+            attack: "",
+            defense: "",
+            speed: "",
+            height: "",
+            weight: "",
             image: "",
-            type: []
+            types: []
         })
         history.push("/home");
     }
 
-    
+  
     let validate = input => {
+        let  isAlpha =/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/
         let errors = {};
         let search = pokemons.find(e => e.name.toLowerCase() === input.name.toLowerCase());
         if (search) errors.name = "Ya existe un pokémon con ese nombre"
-        if (!input.name || input.name.length > 20) errors.name = "El nombre debe tener entre 1 y 20 caracteres"
+        if (!input.name || input.name.length > 150 ||input.name.length < 4 ) errors.name = "El nombre debe tener entre 4 y 150 caracteres"
+        if (!isAlpha.test(input.name)) errors.name = "El nombre debe tener solo letras"
         if (input.name[0] === " ") errors.name = "El primer caracter no puede ser un espacio"
-        if (input.hp > 1000 || input.hp < 1 || !/\d/g.test(input.hp)) errors.hp = "El valor debe estar entre 1 y 1000" 
-        if (input.attack > 1000 || input.attack < 1 || !/\d/g.test(input.attack)) errors.attack = "El valor debe estar entre 1 y 1000" 
-        if (input.defense > 1000 || input.defense < 1 || !/\d/g.test(input.defense)) errors.defense = "El valor debe estar entre 1 y 1000" 
-        if (input.speed > 1000 || input.speed < 1 || !/\d/g.test(input.speed)) errors.speed = "El valor debe estar entre 1 y 1000" 
-        if (input.height > 1000 || input.height < 1 || !/\d/g.test(input.height)) errors.height = "El valor debe estar entre 1 y 1000" 
-        if (input.weight > 1000 || input.weight < 1 || !/\d/g.test(input.weight)) errors.weight = "El valor debe estar entre 1 y 1000" 
+        if ((input.hp )&&(input.hp > 200 || input.hp < 10 || !Number.isInteger(Number(input.hp)))) errors.hp = "El valor debe estar entre 10 y 200" 
+        if  ((input.attack)&& (input.attack > 190 || input.attack <5 || !Number.isInteger(Number(input.attack)))) errors.attack = "El valor debe estar entre 5 y 190" 
+        if((input.defense )&&(input.defense > 250 || input.defense < 5 || !Number.isInteger(Number(input.defense)))) errors.defense = "El valor debe estar entre 5 y 250" 
+        if ((input.speed )&&(input.speed > 180 || input.speed < 5 || !Number.isInteger(Number(input.speed)))) errors.speed = "El valor debe estar entre 5 y 180" 
+        if ((input.height )&&(input.height > 15 || input.height < 0.1 || !/^\d*\.?\d*$/g.test(input.height))) errors.height = "El valor debe estar entre 0.1  y 15.0" 
+        if ((input.weight )&&(input.weight > 1000 || input.weight < 0.1 || !/^\d*\.?\d*$/.test(input.weight))) errors.weight = "El valor debe estar entre 0.1 y 1000.0" 
         return errors;
     }
     
@@ -88,18 +90,18 @@ export default function CrearPokemon() {
         let filtrados = input.type?.filter(t => t !== Number(e.target.value))
         setInput({
             ...input,
-            type: filtrados
+            types: filtrados
         })
     }
 
     
-    let checkTypes = (input, setInput, e) => {
-        if (input.type.length === 2) {
+    let checkTypes = (e) => {
+        if (input.types.length === 2) {
             alert("No puedes elegir más de dos tipos")
             return null;
         }
 
-        for (let i of input.type) {
+        for (let i of input.types) {
             if (Number(e.target.value) === i) {
                 return alert("No puedes elegir dos veces el mismo tipo");
             }
@@ -107,13 +109,13 @@ export default function CrearPokemon() {
     
         setInput({
             ...input,
-            type: [...input.type, Number(e.target.value)]
+            types: [...input.types, Number(e.target.value)]
         })
     }
 
   return (
       <div>
-        <button onClick={() => history.push("/pokemons")} className="buttonBack"> Volver</button>
+        <button onClick={() => history.push("/home")} className="buttonBack"> Volver</button>
         <form className='formCrear' onSubmit={(e)=> handleSubmit(e)}>
             <div>
                 {errors.name && <p className='error'>{errors.name}</p>}
@@ -164,8 +166,8 @@ export default function CrearPokemon() {
             <br/>
             <div>
                 <label>Tipo/s (máx. 2): </label>
-                <select defaultValue="10001" name="type" onChange={(e) => checkTypes(input, setInput, e)}>
-                    <option disabled value="10001">Elegir:</option>
+                <select  name="type" onChange={(e) => checkTypes(e)}>
+                    <option disabled >Elegir:</option>
                     {
                         type?.map(t => {
                             return (
@@ -176,7 +178,7 @@ export default function CrearPokemon() {
                 </select>
                 {
                     /*Acá me renderiza los nombres de los tipos seleccionados*/
-                    input.type?.map(t => {
+                    input.types?.map(t => {
                         let tipo = type.find(obj => obj.id === t);
                         return (
                             <div key={tipo.id} className="contenedorTypeSelected">
