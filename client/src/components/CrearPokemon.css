@@ -30,3 +30,11 @@
 .buttonReset:hover {
     background-color: #ffcc04;
 }
+p.danger {
+    color: red;
+    font-size: 10px;
+  }
+  
+input.danger {
+    border: 2px solid red;
+  }

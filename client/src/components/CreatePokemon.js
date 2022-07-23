@@ -118,50 +118,61 @@ export default function CrearPokemon() {
         <button onClick={() => history.push("/home")} className="buttonBack"> Volver</button>
         <form className='formCrear' onSubmit={(e)=> handleSubmit(e)}>
             <div>
-                {errors.name && <p className='error'>{errors.name}</p>}
+               
                 <label>Nombre: </label>
-                <input autoComplete='off' type="text" name='name' value={input.name} onChange={e => handleInputChange(e)}/>
+                <input  type="text" name='name' value={input.name} onChange={e => handleInputChange(e)}/>
+                {errors.name && <p className='error'>{errors.name}</p>}
             </div>
             <br/>
             <div>
-                {errors.hp && <p className='error'>{errors.hp}</p>}
+              
                 <label>HP: </label>
-                <input autoComplete='off' type="number" name='hp' value={input.hp} onChange={e => handleInputChange(e)}/>
+                <input  type="number" name='hp' value={input.hp} onChange={e => handleInputChange(e)}/>
+              {errors.hp && <p className='error'>{errors.hp}</p>}
             </div>
             <br/>
             <div>
-                {errors.attack && <p className='error'>{errors.attack}</p>}
+                
                 <label>Ataque: </label>
-                <input autoComplete='off' type="number" name='attack' value={input.attack} onChange={e => handleInputChange(e)}/>
+                <input type="number" name='attack' value={input.attack} onChange={e => handleInputChange(e)}/>
+                 {errors.attack && <p className='error'>{errors.attack}</p>}
             </div>
             <br/>
             <div>
-                {errors.defense && <p className='error'>{errors.defense}</p>}
+                
                 <label>Defensa: </label>
-                <input autoComplete='off' type="number" name='defense' value={input.defense} onChange={e => handleInputChange(e)}/>
+                <input  type="number" name='defense' value={input.defense} onChange={e => handleInputChange(e)}/>
+                {errors.defense && <p className='error'>{errors.defense}</p>}
             </div>
             <br/>
             <div>
-                {errors.speed && <p className='error'>{errors.speed}</p>}
+               
                 <label>Velocidad: </label>
-                <input autoComplete='off' type="number" name='speed' value={input.speed} onChange={e => handleInputChange(e)}/>
+                <input  type="number" name='speed' value={input.speed} onChange={e => handleInputChange(e)}/>
+                {errors.speed && <p className='error'>{errors.speed}</p>}
             </div>
             <br/>
             <div>
-                {errors.height && <p className='error'>{errors.height}</p>}
+                
                 <label>Altura: </label>
-                <input autoComplete='off' type="number" name='height' value={input.height} onChange={e => handleInputChange(e)}/>
+                <input  type="number" name='height' className={errors.height && 'danger'}
+                value={input.height} onChange={e => handleInputChange(e)}/>
+                 {errors.height && <p className='danger'>{errors.height }</p>}
             </div>
             <br/>
             <div>
-                {errors.weight && <p className='error'>{errors.weight}</p>}
+                
                 <label>Peso: </label>
-                <input autoComplete='off' type="number" name='weight' value={input.weight} onChange={e => handleInputChange(e)}/>
+                <input type="number" className={errors.weight && 'danger'}
+                name='weight' value={input.weight}
+                onChange={e => handleInputChange(e)}/>
+                {errors.weight && <p className='danger'>{errors.weight }</p>}
+                
             </div>
             <br/>
             <div>
                 <label>URL de imagen: </label>
-                <input autoComplete='off' type="text" name="image" value={input.image} onChange={e => handleInputChange(e)} />
+                <input  type="text" name="image" value={input.image} onChange={e => handleInputChange(e)} />
             </div>
             <br/>
             <div>
