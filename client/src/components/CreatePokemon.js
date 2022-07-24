@@ -80,7 +80,7 @@ export default function CrearPokemon() {
         if  ((input.attack)&& (input.attack > 190 || input.attack <5 || !Number.isInteger(Number(input.attack)))) errors.attack = "El valor debe estar entre 5 y 190" 
         if((input.defense )&&(input.defense > 250 || input.defense < 5 || !Number.isInteger(Number(input.defense)))) errors.defense = "El valor debe estar entre 5 y 250" 
         if ((input.speed )&&(input.speed > 180 || input.speed < 5 || !Number.isInteger(Number(input.speed)))) errors.speed = "El valor debe estar entre 5 y 180" 
-        if ((input.height )&&(input.height > 15 || input.height < 0.1 || !/^\d*\.?\d*$/g.test(input.height))) errors.height = "El valor debe estar entre 0.1  y 15.0" 
+        if ((input.height )&&(input.height > 15 || input.height < 0.1 || !/^\d*\.?\d*$/.test(input.height))) errors.height = "El valor debe estar entre 0.1  y 15.0" 
         if ((input.weight )&&(input.weight > 1000 || input.weight < 0.1 || !/^\d*\.?\d*$/.test(input.weight))) errors.weight = "El valor debe estar entre 0.1 y 1000.0" 
         return errors;
     }
@@ -120,42 +120,47 @@ export default function CrearPokemon() {
             <div>
                
                 <label>Nombre: </label>
-                <input  type="text" name='name' value={input.name} onChange={e => handleInputChange(e)}/>
-                {errors.name && <p className='error'>{errors.name}</p>}
+                <input  type="text"  className={errors.name && 'danger'} name='name' 
+                value={input.name} onChange={e => handleInputChange(e)}/>
+                {errors.name && <p className='danger'>{errors.name}</p>}
             </div>
             <br/>
             <div>
               
                 <label>HP: </label>
-                <input  type="number" name='hp' value={input.hp} onChange={e => handleInputChange(e)}/>
-              {errors.hp && <p className='error'>{errors.hp}</p>}
+                <input  type="number" className={errors.hp && 'danger'}  name='hp'
+                 value={input.hp} onChange={e => handleInputChange(e)}/>
+              {errors.hp && <p className='danger'>{errors.hp}</p>}
             </div>
             <br/>
             <div>
                 
                 <label>Ataque: </label>
-                <input type="number" name='attack' value={input.attack} onChange={e => handleInputChange(e)}/>
-                 {errors.attack && <p className='error'>{errors.attack}</p>}
+                <input type="number" className={errors.attack && 'danger'} name='attack' 
+                 value={input.attack}  onChange={e => handleInputChange(e)}/>
+                 {errors.attack && <p className='danger'>{errors.attack}</p>}
             </div>
             <br/>
             <div>
                 
                 <label>Defensa: </label>
-                <input  type="number" name='defense' value={input.defense} onChange={e => handleInputChange(e)}/>
-                {errors.defense && <p className='error'>{errors.defense}</p>}
+                <input  type="number" className={errors.defense && 'danger'} name='defense'
+                value={input.defense} onChange={e => handleInputChange(e)}/>
+                {errors.defense && <p className='danger'>{errors.defense}</p>}
             </div>
             <br/>
             <div>
                
                 <label>Velocidad: </label>
-                <input  type="number" name='speed' value={input.speed} onChange={e => handleInputChange(e)}/>
-                {errors.speed && <p className='error'>{errors.speed}</p>}
+                <input  type="number" className={errors.speed && 'danger'} name='speed'
+                value={input.speed} onChange={e => handleInputChange(e)}/>
+                {errors.speed && <p className='danger'>{errors.speed}</p>}
             </div>
             <br/>
             <div>
                 
                 <label>Altura: </label>
-                <input  type="number" name='height' className={errors.height && 'danger'}
+                <input  type="number" className={errors.height && 'danger'} name='height'
                 value={input.height} onChange={e => handleInputChange(e)}/>
                  {errors.height && <p className='danger'>{errors.height }</p>}
             </div>
@@ -163,9 +168,8 @@ export default function CrearPokemon() {
             <div>
                 
                 <label>Peso: </label>
-                <input type="number" className={errors.weight && 'danger'}
-                name='weight' value={input.weight}
-                onChange={e => handleInputChange(e)}/>
+                <input type="number" className={errors.weight && 'danger'}  name='weight'
+                 value={input.weight} onChange={e => handleInputChange(e)}/>
                 {errors.weight && <p className='danger'>{errors.weight }</p>}
                 
             </div>

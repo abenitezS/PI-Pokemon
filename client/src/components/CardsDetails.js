@@ -46,7 +46,7 @@ return(
             <h4>Defensa{myPokemon.defense}</h4>
             <h4>Velocidad{myPokemon.speed}</h4>
 
-            <h3>Altura:{myPokemon.heigth} Peso:{myPokemon.weight} </h3>
+            <h3>Altura:{myPokemon.height} Peso:{myPokemon.weight} </h3>
           </div>    
          }
          <Link to={`/home`}>
