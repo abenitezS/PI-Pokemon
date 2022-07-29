@@ -1,19 +1,23 @@
 import React from  "react";
-import  './Card.css'
+import { Link } from "react-router-dom";
+import style from './Card.module.css'
+
  export default function Card({idPokemon, name, image , types }){
     let i = 0;
     return (
-        <div className="contenedorCard">
-               <h3 >{idPokemon}</h3>
-             <img className="imagenCard" src={image} alt='img not found' />  
-            
-             <h3 className="nombreCard" >{name}</h3>       
-         
-            { types?.map((t) => {
+        <div className={style.contenedorCard}>
+           <Link  className={style.navlink} to={`/home/${idPokemon} `}>
+             <h6>{idPokemon}</h6>
+              <h3 className={style.nombreCard} >{name.toUpperCase()}</h3> 
+               <img className={style.imagenCard} src={image} alt='img not found' />  
+              { types?.map((t) => {
               i++;
-              return <h5 key={i}  className="typesCard"> {t} </h5>;
+              return <h5 key={i}  className={style.typesCard}> {t} </h5>;
             })
-             }
+             }  
+           </Link>
+            
+           
             
         </div>
     )

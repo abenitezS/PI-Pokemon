@@ -1,19 +1,24 @@
 body {
-  margin: 0;
   height: 100vh;
   /* background-image: url('https://eloutput.com/app/uploads-eloutput.com/2021/04/Pokemon-funko-8.jpg');
   background-repeat: no-repeat;
   background-size: cover ;
   background-position: center bottom; */
 
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body,
+input {
+  font-family: "Lato", sans-serif;
+}
+
+:root {
+  --border-color: #ffffff80;
+  --card-bkg-color: #00000080;
+  --btn-bkg-danger: #e63946;
+  --btn-bkg-danger-hover: #7F1019;
+  --card-main-bkg-color: #00000029;
+
 }

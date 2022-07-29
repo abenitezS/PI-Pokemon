@@ -2,10 +2,11 @@ import React from 'react'
 import {useState, useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {filterByCreatedOrAPI, filterByType, getAllPokemons,getAllTypes,orderByAlphabet, orderByAttack} from '../components/actions/index'
-import {Link} from 'react-router-dom'
 import Card from '../components/Card'
 import Paginado from './Paginado'
-import SearchBar from './SearchBar'
+
+import style from './Home.modules.css';
+import NavBar from './NavBar'
 
 export default function Home() {
   let [, setFiltrados] = useState();
@@ -37,10 +38,7 @@ useEffect(()=>{dispatch(getAllPokemons() )
 
 console.log(alltypes )
 
-function handleClick(e){
-    e.preventDefault();
-    dispatch(getAllPokemons());
-      }
+
 
 function  handlefilterType(e){
     
@@ -67,17 +65,18 @@ function handleOrderByAttack(e){
   setCurrentPage(1);
   setFiltrados(`Ordenado Alfabetico ${e.target.value}`) //me sirve para que modifique el estado local y se renderice
 }
+function handleClick(e){
+  e.preventDefault();
+  dispatch(getAllPokemons());
+    }
 
 return(
-    <div>  
-     <Link to='/pokemon'>Crear Pokemons</Link> 
-      <h1>POKEMONS </h1>   
-      
-      <button onClick={e=>handleClick(e)}>
-          Volver a cargar 
+   <div >  
+    <NavBar/>
+    <button className={style.buttonCrear} onClick={e=>handleClick(e)}>
+          Volver a cargar
       </button>
-
-      <div>
+      <div >
 
         <select defaultValue="Filtrar por tipo:" name='order-type' onChange={e => handlefilterType(e)}>
           <option disabled>Filtrar por tipo:</option>
@@ -110,19 +109,20 @@ return(
         </select>
 
       </div>
-     <div>       
+     <div >       
  
+
           <Paginado
                 pokemonsPerPage={pokemonsPerPage}
                 allPokemons={allPokemons.length}
                 paginado={paginado}
-          />
+           />
 
-            <SearchBar/>
+
         {currentPokemons?.map((e) => {
               return (
                 <div key={e.id}>                
-                  <Link to={`/home/${e.id} `}>
+                 
                     <Card 
                     
                     idPokemon={e.id} 
@@ -130,7 +130,7 @@ return(
                     image={e.image} 
                     types={e.createdInDB ? e.types?.map(t => t.name) : e.types} />
 
-                  </Link>
+                  
                 </div>
             )
             })

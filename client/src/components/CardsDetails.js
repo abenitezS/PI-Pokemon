@@ -2,7 +2,7 @@ import React from 'react'
 import {Link, useParams} from "react-router-dom"
 import {useDispatch,useSelector} from "react-redux"
 import { getPokemonById,cleanCache } from './actions/index'
-import  './Card.css'
+import  style from './Card.module.css'
 
 
 export default function CardDetail(){
@@ -31,12 +31,12 @@ return(
             <div>
                  <h3> Numero: {myPokemon.id}</h3>
              
-             <img className="imagenCard" src={myPokemon.image} alt='img not found' />  
-              <h1 className="nombreCard" > Nombre: {myPokemon.name}</h1>       
+             <img className={style.imagenCard} src={myPokemon.image} alt='img not found' />  
+              <h1 className={style.nombreCard} > Nombre: {myPokemon.name}</h1>       
            
              {myPokemon.types?.map((t) => {
                i++;
-              return <h5 key={i}  className="typesCard"> {myPokemon.createdInDB ? t.name : t} </h5>;
+              return <h5 key={i}  className={style.nombreCard}> {myPokemon.createdInDB ? t.name : t} </h5>;
                 })
                
             }

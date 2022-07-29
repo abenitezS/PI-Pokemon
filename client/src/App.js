@@ -1,5 +1,5 @@
 import React from 'react';  //me falto eso!!!
-import './App.css';
+import styles from './App.modules.css';
 import Home from '../../client/src/components/Home.js';
 import {BrowserRouter, Route, Switch } from 'react-router-dom'
 import LandingPage from '../../client/src/components/LandingPage.js';
@@ -8,7 +8,7 @@ import CardsDetails from '../src/components/CardsDetails';
 function App() {
   return (
    <BrowserRouter>
-   <div className='App'>
+   <div>
    
     <Switch >
       

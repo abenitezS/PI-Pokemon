@@ -1,4 +1,4 @@
-.App {
+ .App {
   text-align: center;
 }
 
@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+/*
+ .app {
+  text-align: center;
+  background-image: url('https://www.passionateinmarketing.com/wp-content/uploads/2021/09/Quantumcomputing-weatherforecast.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}*/
+
