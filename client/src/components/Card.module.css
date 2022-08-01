@@ -21,7 +21,7 @@
       border-radius: 1rem;
       font-size: large;
      
-      height: 0%;
+      height: 50%;
     }
 
 
@@ -47,10 +47,13 @@
 }
 
 .typesCard {
-    text-align: center;
-    font-size: large;
+    
+   font-weight: bold;
+   font-size:medium;
+   align-content: initial;
+    
 
-    margin: 0.15em;
+    
 }
 
 .navlink {
@@ -58,4 +61,12 @@
     text-decoration: none;
     color: rgba(21, 3, 67, 0.569);
     margin: 0.05em;
+}
+.detail{
+    display:flex;
+    justify-content:center;
+    /* align-items:center; */
+    height: 0%;
+    padding: 0%;
+    
 }

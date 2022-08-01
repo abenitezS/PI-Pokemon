@@ -1,5 +1,5 @@
 import React from 'react';  //me falto eso!!!
-import styles from './App.modules.css';
+
 import Home from '../../client/src/components/Home.js';
 import {BrowserRouter, Route, Switch } from 'react-router-dom'
 import LandingPage from '../../client/src/components/LandingPage.js';

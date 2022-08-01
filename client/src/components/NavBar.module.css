@@ -1,10 +1,12 @@
 .contenedorNavbar {
-    padding: 20px;
-    color: black;
+    
+    color: rgb(0, 0, 0);
     text-align: center;
     background-color: #1971c9d3;
+   
 }
 
 .tituloNavbar {
-    width: 100px;
+    width: 60px;
+    
 }

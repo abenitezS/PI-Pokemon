@@ -3,16 +3,17 @@
     width: 90px;
     height: 45px;
     color: black;
-    border-radius: 20px;
+    border-radius: 15px;
+    border: none;
     transition: .3s;
 }
 
 .buttonCrear:not(:disabled):hover {
-    background-color: #ffcc04
+    background-color: #04e2ffce
 }
 
 .buttonCrear:disabled {
-    border: 1px solid rgba(112, 112, 112, 0.753);
+    border: 0.05px  rgb(214, 212, 212);;
     cursor: not-allowed;
 }
 
@@ -20,12 +21,12 @@
     cursor: pointer;
     width: 60px;
     height: 30px;
-    border-radius: 20px;
+    border-radius: 15px;
     transition: .3s;
 }
 
 .buttonSearch:not(:disabled):hover {
-    background-color: #251e69d4
+    background-color: #04e2ffce
 }
 
 .buttonSearch:disabled {
@@ -36,9 +37,9 @@
 .inputSearch {
     border: 0;
     background-color: white;
-    border: 1px solid black;
+    border: 0.05px  rgb(109, 103, 103);
     height: 25px;
-    border-radius: 20px;
+    border-radius: 15px;
     margin-right: 10px;
     color: black;
     text-align: center;
@@ -56,11 +57,12 @@
     display: flex;
     flex-direction: row;
    justify-content: center;
+   padding-top: 3em;
 }
 
 .contenedorButtonCrear {
    text-align: center;
-   margin: 1em;
+  
    width: fit-content;
    padding-left: 6em;
 }

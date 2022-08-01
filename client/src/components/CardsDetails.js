@@ -1,13 +1,16 @@
 import React from 'react'
-import {Link, useParams} from "react-router-dom"
+import {Link,useHistory, useParams} from "react-router-dom"
 import {useDispatch,useSelector} from "react-redux"
 import { getPokemonById,cleanCache } from './actions/index'
 import  style from './Card.module.css'
+import ErrorMsj from './ErrorMsj'
+
 
 
 export default function CardDetail(){
     console.log(useParams())
     const {id} =useParams()
+    const history=useHistory()
 
     const dispatch=useDispatch()
     
@@ -18,21 +21,28 @@ export default function CardDetail(){
     const myPokemon=useSelector(state=>state.pokemon)
 console.log(myPokemon)
 
+
+
 let cleanAndBack = () => {
-    
+    history.push('/home')
     dispatch(cleanCache());
   };
 let i=0;
+ 
+
 return(
-    
-    <div>
-        {
-          
-            <div>
+    myPokemon.error ?
+    <ErrorMsj/> :
+    myPokemon.length===0 ?
+    <ErrorMsj/>
+    :
+    <div className={style.detail}>
+        {       
+            <div className={style.contenedorCard}>
                  <h3> Numero: {myPokemon.id}</h3>
              
              <img className={style.imagenCard} src={myPokemon.image} alt='img not found' />  
-              <h1 className={style.nombreCard} > Nombre: {myPokemon.name}</h1>       
+              <h4 className={style.nombreCard} >  {myPokemon.name.toUpperCase()}</h4>       
            
              {myPokemon.types?.map((t) => {
                i++;
@@ -40,13 +50,13 @@ return(
                 })
                
             }
-            <h1>Estadisticas</h1>
-            <h4>Vida: {myPokemon.hp}</h4>
-            <h4>Ataque:{myPokemon.attack}</h4>
-            <h4>Defensa{myPokemon.defense}</h4>
-            <h4>Velocidad{myPokemon.speed}</h4>
+            <h5>Estadisticas</h5>
+            <div  className={style.typesCard} >Vida: {myPokemon.hp}</div>
+            <div className={style.typesCard}> Ataque: {myPokemon.attack}</div>
+            <div className={style.typesCard}>Defensa: {myPokemon.defense}</div>
+            <div className={style.typesCard} >Velocidad: {myPokemon.speed}</div>
 
-            <h3>Altura:{myPokemon.height} Peso:{myPokemon.weight} </h3>
+            <h5>Altura: {myPokemon.height}     Peso: {myPokemon.weight} </h5>
           </div>    
          }
          <Link to={`/home`}>

@@ -29,6 +29,15 @@ const rootReducer = (state = initialState, action) => {
            
         }
         case GET_POKEMON_BY_ID: 
+        if (action.payload.msj) {
+            let error = {error: "No se encontró el pokémon"}
+            console.log(error)
+            return {
+                ...state,
+                pokemon: error,
+              
+            }
+        }
             return {
             ...state,
             pokemon: action.payload,
