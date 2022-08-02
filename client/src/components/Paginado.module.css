@@ -1,0 +1,61 @@
+/* .paginado{
+    display: inline;
+    text-align: center;
+    background-color: rgba(10, 10, 10, 0.5);
+    padding: 5px 12px;
+
+    line-height: 2
+}
+*/ 
+.contenedorPaginado {
+
+padding: 0.15em;
+background-color: rgba(146, 154, 161, 0.585)
+}
+.pag_ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin: 10px auto;
+ 
+}
+
+.contenedorPaginado ul button {
+  cursor: pointer;
+  max-width: 50px;
+  min-width: auto;
+  max-height: 30px;
+  min-height: auto;
+  text-align: center;
+  border-radius: 15px;
+  transition: .3s;
+
+}
+
+
+
+
+.btnActive {
+  background-color: #faf60a;
+  border: none;
+}
+.btnActive:not(:disabled):hover {
+  background-color:#05b8b8b9
+} 
+
+.btnPagination
+ {
+  background-color: #ffcd0469;
+  border: none;
+}
+
+.btnPagination:not(:disabled):hover {
+  background-color:#05b8b8b9
+}
+.pag_a {
+    align-items: center;
+    font-size:15px;
+ 
+   
+  }

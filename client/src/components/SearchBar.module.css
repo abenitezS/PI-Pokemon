@@ -1,32 +1,35 @@
 .buttonCrear {
     cursor: pointer;
-    width: 90px;
-    height: 45px;
+    width: 130px;
+    height: 30px;
     color: black;
     border-radius: 15px;
     border: none;
-    transition: .3s;
+    transition: .3s; 
+    background-color: darkgrey;
 }
 
 .buttonCrear:not(:disabled):hover {
-    background-color: #04e2ffce
+    background-color:#e3e6e6b9
 }
-
 .buttonCrear:disabled {
-    border: 0.05px  rgb(214, 212, 212);;
+    border: 0.05px  rgba(102, 102, 103, 0.639);
     cursor: not-allowed;
+   
 }
 
 .buttonSearch {
     cursor: pointer;
-    width: 60px;
+    width: 62px;
     height: 30px;
     border-radius: 15px;
     transition: .3s;
+    border:none;
+    background-color: darkgrey;
 }
 
 .buttonSearch:not(:disabled):hover {
-    background-color: #04e2ffce
+    background-color: #e3e6e6b9
 }
 
 .buttonSearch:disabled {
@@ -40,7 +43,7 @@
     border: 0.05px  rgb(109, 103, 103);
     height: 25px;
     border-radius: 15px;
-    margin-right: 10px;
+    
     color: black;
     text-align: center;
 }
@@ -57,7 +60,8 @@
     display: flex;
     flex-direction: row;
    justify-content: center;
-   padding-top: 3em;
+   padding-top: 2em;
+   padding-bottom: 1em;
 }
 
 .contenedorButtonCrear {

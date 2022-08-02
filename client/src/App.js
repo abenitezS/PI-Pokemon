@@ -5,6 +5,7 @@ import {BrowserRouter, Route, Switch } from 'react-router-dom'
 import LandingPage from '../../client/src/components/LandingPage.js';
 import CreatePokemon from '../../client/src/components/CreatePokemon';
 import CardsDetails from '../src/components/CardsDetails';
+import NavBar from './components/NavBar.js';
 function App() {
   return (
    <BrowserRouter>
@@ -12,14 +13,24 @@ function App() {
    
     <Switch >
       
-      <Route  path="/home/:id" component={CardsDetails}  />
+      <Route  path="/home/:id">
+        <NavBar /> 
+        <CardsDetails/>
+      </Route>
 
       <Route exact path="/" component={LandingPage}/>
       
-      <Route  path="/home" component={Home}/>  
+      <Route  path="/home">  
+        <NavBar /> 
+        <Home/>
+      </Route>
+      <Route path='/Pokemon'>    
+      <NavBar /> 
+        <CreatePokemon/>
+      </Route>
 
-      <Route path='/Pokemon' component={CreatePokemon} />    
-      
+      <Route path="*" component={LandingPage}/>
+  
      </Switch>
 
     </div>

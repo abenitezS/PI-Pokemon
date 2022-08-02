@@ -12,7 +12,7 @@ import style from './Card.module.css'
                <img className={style.imagenCard} src={image} alt='img not found' />  
               { types?.map((t) => {
               i++;
-              return <h5 key={i}  className={style.typesCard}> {t} </h5>;
+              return <div key={i}  className={style.typesCard}> {t} </div>;
             })
              }  
            </Link>

@@ -4,7 +4,7 @@ import {useDispatch,useSelector} from "react-redux"
 import { getPokemonById,cleanCache } from './actions/index'
 import  style from './Card.module.css'
 import ErrorMsj from './ErrorMsj'
-
+import Loading from './Loading'
 
 
 export default function CardDetail(){
@@ -34,7 +34,7 @@ return(
     myPokemon.error ?
     <ErrorMsj/> :
     myPokemon.length===0 ?
-    <ErrorMsj/>
+    <Loading/>
     :
     <div className={style.detail}>
         {       
@@ -46,7 +46,7 @@ return(
            
              {myPokemon.types?.map((t) => {
                i++;
-              return <h5 key={i}  className={style.nombreCard}> {myPokemon.createdInDB ? t.name : t} </h5>;
+              return <div key={i}  className={style.nombreCard}> {myPokemon.createdInDB ? t.name : t} </div>;
                 })
                
             }

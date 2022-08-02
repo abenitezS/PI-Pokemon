@@ -1,0 +1,46 @@
+
+
+  .contenedorPokemon {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 2rem;
+    
+   
+}
+
+.contenedorFiltros {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 1em;
+    background-color: rgba(240, 248, 255, 0.574)
+}
+
+.contenedorFiltros select {
+  
+    background-color: white;
+    border: 0.05px  rgb(109, 103, 103);
+    height: 25px;
+    border-radius: 15px;
+    
+    color: black;
+    text-align: center;
+}
+
+
+.contenedorFiltros button {
+    border-radius: 15px;
+    border: 1px solid black;
+    height: 25px;
+   
+}
+
+.buttonReset {
+    cursor: pointer;
+    transition: .3s;
+}
+
+.buttonReset:hover {
+    background-color: #ffcc04;
+}
