@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link,useHistory, useParams} from "react-router-dom"
 import {useDispatch,useSelector} from "react-redux"
-import { getPokemonById,cleanCache } from './actions/index'
+import { getPokemonById,cleanCache ,cleanCacheAll,deletePokemon} from './actions/index'
 import  style from './Card.module.css'
 import ErrorMsj from './ErrorMsj'
 import Loading from './Loading'
@@ -27,9 +27,16 @@ let cleanAndBack = () => {
     history.push('/home')
     dispatch(cleanCache());
   };
-let i=0;
- 
 
+let handleDelete = () => {
+    history.push("/home");
+    alert("Pokémon se ha eliminado")
+    dispatch(cleanCache());
+    dispatch(cleanCacheAll());
+    dispatch(deletePokemon(id));
+  }
+ 
+let i=0;
 return(
     myPokemon.error ?
     <ErrorMsj/> :
@@ -51,10 +58,10 @@ return(
                
             }
             <h5>Estadisticas</h5>
-            <div  className={style.typesCard} >Vida: {myPokemon.hp}</div>
-            <div className={style.typesCard}> Ataque: {myPokemon.attack}</div>
-            <div className={style.typesCard}>Defensa: {myPokemon.defense}</div>
-            <div className={style.typesCard} >Velocidad: {myPokemon.speed}</div>
+            <div  className={style.typesCard}>    Vida: {myPokemon.hp}</div>
+            <div className={style.typesCard}>   Ataque: {myPokemon.attack}</div>
+            <div className={style.typesCard}>  Defensa: {myPokemon.defense}</div>
+            <div className={style.typesCard}>Velocidad: {myPokemon.speed}</div>
 
             <h5>Altura: {myPokemon.height}     Peso: {myPokemon.weight} </h5>
           </div>    
@@ -62,6 +69,13 @@ return(
          <Link to={`/home`}>
             <button onClick={cleanAndBack}>Volver</button>
         </Link>
+        {
+          myPokemon.createdInDB && (
+            <div className={style.contenedorDelete}>
+              <button onClick={() => handleDelete()} className={style.btnDelete}>Borrar</button>
+            </div>
+          )
+        }
         
     </div>
 )

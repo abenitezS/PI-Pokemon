@@ -10,6 +10,7 @@ export const ORDER_ALPHABET = "ORDER_ALPHABET";
 export const FILTER_TYPE = "FILTER_TYPE";
 export const FILTER_CREATED_API= "FILTER_CREATED_API";
 export const ORDER_ATTACK='ORDER_ATTACK'
+export const DELETE_POKEMON='DELETE_POKEMON'
 
 
 export function getAllPokemons() {
@@ -61,9 +62,9 @@ export function createPokemon(values) {
     return async function(dispatch) {
         try {
             const {data} = await axios.post(`http://localhost:3001/pokemons`, values);
-            dispatch({type: CREATE_POKEMON, payload: data});
+            dispatch({type: DELETE_POKEMON, payload: data});
         } catch (error) {
-            console.log(error);
+            return console.log(error);
         }
     }
 };
@@ -95,3 +96,13 @@ export const filterByCreatedOrAPI = (payload) => {
     return {type: FILTER_CREATED_API, payload}
 }
 
+export function deletePokemon(id) {
+    return async function(dispatch) {
+        try {
+            await axios.delete(`http://localhost:3001/pokemons/${id}`);
+            dispatch({type: deletePokemon});
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}

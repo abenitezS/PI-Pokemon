@@ -120,7 +120,7 @@ router.get ( '/:id' , async (req, res) => {
  router.post("/", async (req, res, next) => {
         let {name, hp, attack, defense, speed, height, weight, image, types} = req.body;
         if (!image || image === undefined || image === "" || !/(https?:\/\/.*\.(?:png|jpg|jpeg))/i.test(image)) {
-            image = "https://camo.githubusercontent.com/5d1fe59c3f0e4cfb5480bb8d8b1eb3ba58906acef846904fde8afcc5f773adbb/68747470733a2f2f692e696d6775722e636f6d2f583962314b75362e706e67";
+            image = "https://img.icons8.com/clouds/500/pokemon-go.png";
         }
         if (!types || types.length === 0) types = [10001];  //puedo crear tipos no existentes????
         
@@ -165,7 +165,7 @@ router.delete("/:id" , async (req, res, next) => {
    let {name, hp, attack, defense, speed, height, weight, image, type} = req.body;
    let {id} = req.params;
    if (!image || image === undefined || image === "" || !/(https?:\/\/.*\.(?:png|jpg|jpeg))/i.test(image)) {
-            image = "https://camo.githubusercontent.com/5d1fe59c3f0e4cfb5480bb8d8b1eb3ba58906acef846904fde8afcc5f773adbb/68747470733a2f2f692e696d6775722e636f6d2f583962314b75362e706e67";
+            image = "https://img.icons8.com/clouds/500/pokemon-go.png";
         }
    if (!type || type.length === 0) type = [10001];
         try {

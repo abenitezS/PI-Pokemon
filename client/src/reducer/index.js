@@ -10,6 +10,7 @@ import {
     CLEAN_CACHE_ALL,     
     FILTER_TYPE, 
     FILTER_CREATED_API,
+    DELETE_POKEMON
      } from "../components/actions/index.js"
 
 const initialState = {
@@ -67,10 +68,8 @@ const rootReducer = (state = initialState, action) => {
             pokemonsall: [...state.pokemons, action.payload],
             
         }
-        // case DELETE_POKE: return {
-        //     ...state,
-        //     page: 1
-        // }
+        
+      
         case CLEAN_CACHE: return {
             ...state,
             pokemon: [],
@@ -165,10 +164,14 @@ const rootReducer = (state = initialState, action) => {
             ...state,
             pokemons: pokesOrigen,
         }
-
+        case DELETE_POKEMON: return {
+            ...state,
+           
+        }
             
      default: return state
     }
+
 }
 
 export default rootReducer

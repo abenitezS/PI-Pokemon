@@ -23,12 +23,12 @@ background-color: rgba(146, 154, 161, 0.585)
 
 .contenedorPaginado ul button {
   cursor: pointer;
-  max-width: 50px;
-  min-width: auto;
-  max-height: 30px;
-  min-height: auto;
+  width: 50px;
+
+  height: 30px;
+
   text-align: center;
-  border-radius: 15px;
+  border-radius: 10px;
   transition: .3s;
 
 }
@@ -55,7 +55,7 @@ background-color: rgba(146, 154, 161, 0.585)
 }
 .pag_a {
     align-items: center;
-    font-size:15px;
+    font-size:medium;
  
    
   }
