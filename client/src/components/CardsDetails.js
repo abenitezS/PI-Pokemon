@@ -2,7 +2,7 @@ import React from 'react'
 import {Link,useHistory, useParams} from "react-router-dom"
 import {useDispatch,useSelector} from "react-redux"
 import { getPokemonById,cleanCache ,cleanCacheAll,deletePokemon} from './actions/index'
-import  style from './Card.module.css'
+import  style from './CardDetails.module.css'
 import ErrorMsj from './ErrorMsj'
 import Loading from './Loading'
 
@@ -43,32 +43,41 @@ return(
     myPokemon.length===0 ?
     <Loading/>
     :
-    <div className={style.detail}>
+    <>
+     <div className={style.containerBack}>
+          <h1 className={style.titulo}>  Detalle </h1>
+           <Link to={`/home`}>
+            <button className={style.buttonBack} onClick={cleanAndBack}>{"<"} Volver</button>
+        </Link>
+     </div>
+    <div className={style.contenedorDetails}>
         {       
             <div className={style.contenedorCard}>
-                 <h3> Numero: {myPokemon.id}</h3>
-             
+                 <h4> Numero: {myPokemon.id}</h4>
+               <h2 className={style.nombreCard} >  {myPokemon.name.toUpperCase()}</h2>   
              <img className={style.imagenCard} src={myPokemon.image} alt='img not found' />  
-              <h4 className={style.nombreCard} >  {myPokemon.name.toUpperCase()}</h4>       
-           
+                
+           <div className={style.tipoDetails}>
              {myPokemon.types?.map((t) => {
                i++;
-              return <div key={i}  className={style.nombreCard}> {myPokemon.createdInDB ? t.name : t} </div>;
+              return <div key={i} className={style.CardDetail}> {myPokemon.createdInDB ? t.name : t} </div>;
                 })
                
             }
-            <h5>Estadisticas</h5>
-            <div  className={style.typesCard}>    Vida: {myPokemon.hp}</div>
-            <div className={style.typesCard}>   Ataque: {myPokemon.attack}</div>
-            <div className={style.typesCard}>  Defensa: {myPokemon.defense}</div>
-            <div className={style.typesCard}>Velocidad: {myPokemon.speed}</div>
-
-            <h5>Altura: {myPokemon.height}     Peso: {myPokemon.weight} </h5>
+            <h4>Estadisticas</h4>
+            </div >
+            <div className={style.contenedorDetails2}>
+            <div>   Vida: {myPokemon.hp}</div>
+            <div> Ataque: {myPokemon.attack}</div>
+            <div>Defensa: {myPokemon.defense}</div>
+            <div>Velocidad: {myPokemon.speed}</div>
+            </div>
+            <h5>Altura: {myPokemon.height}</h5>   
+            <h5>Peso: {myPokemon.weight} </h5>
           </div>    
          }
-         <Link to={`/home`}>
-            <button onClick={cleanAndBack}>Volver</button>
-        </Link>
+       
+        
         {
           myPokemon.createdInDB && (
             <div className={style.contenedorDelete}>
@@ -78,5 +87,7 @@ return(
         }
         
     </div>
+    </>
+    
 )
 }

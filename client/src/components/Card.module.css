@@ -1,52 +1,51 @@
 
 .contenedorCard {
-  
-
       display: flex;
       flex-direction: column ;
+      width: 15vw;
+     height: 25vw;
      
-      width :15vw;
-      height: 18vw;
       border: 1px solid var(--border-color);
-
+   
+      gap: 5rem;
       align-items: center;
       opacity: 10;
+      align-content:space-around;
       
       background-image: linear-gradient(178deg, #95f0dfb9 0%, #9face6bf 50%, #ffffff7d 100%);
     
       border-radius: 1.5rem;
-      font-size: large;
-      margin: 30px auto;
+      font-size: medium;
+      margin-left: 2rem;
      
-      
     }
 
 
 
 .contenedorCard:hover {
-    background-image: linear-gradient(178deg, #95f0dfce 0%, #9face6c6 50%, #ffffffbb 100%);
+    background-image: linear-gradient(178deg, #95f0df92 0%, #94a0d6c6 50%, #ffffffca 100%);
 }
 
 .imagenCard {
     
-    width: 150px auto ;
-    max-height: 150px ;
+    width: 160x auto ;
+    height: 160px ;
     margin: 0em;
     
-    padding: 0;
+    padding: 0em;
      border-radius: 50px; 
-    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.916));
+    /* filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.916)); */
 }
 
 .nombreCard {
     text-align: center;
-    margin: 0.15em ;
+    margin:0em;
+    padding: 0em
 }
 
 .typesCard {
-    
    font-weight: bold;
-   font-size:medium;
+   
     
 }
 
@@ -55,17 +54,4 @@
     text-decoration: none;
     color: rgba(21, 3, 67, 0.569);
     margin: 0.05em;
-}
-.detail{
-    display:flex;
-    justify-content:center;
-    
-}
-.contenedorDelete {
-    margin: 20px auto;
-    text-align: center;
-}
-
-.btnDelete {
-    cursor: pointer;
 }

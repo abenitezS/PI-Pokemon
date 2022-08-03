@@ -4,9 +4,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import {filterByCreatedOrAPI, filterByType, getAllPokemons,getAllTypes,orderByAlphabet, orderByAttack,cleanCacheAll} from '../components/actions/index'
 import Card from '../components/Card'
 import Paginado from './Paginado'
-
 import Error404 from "./ErrorMsj";
-
 import style from './Home.module.css';
 import Loading from './Loading'
 
@@ -33,8 +31,6 @@ const currentPokemons=allPokemons.slice(indexOfFirstPokemons,indexOfLastPokemons
 const paginado = (pageNumber)=>{  // me va a servit para el renderizado
   setCurrentPage(pageNumber)
 }
-
-
 
 useEffect(()=>{dispatch(getAllPokemons() )
   dispatch(getAllTypes())},[dispatch])
@@ -93,26 +89,26 @@ return(
             })
           }
           </select>
-        <select defaultValue="Creados o Existentes:" name='origen'onChange={e=>handelCreatedOrExisted(e)}>
-          <label> Filtrar por Creados o Existentes</label>
-          <option>Creados o Existentes:</option>
+        <select defaultValue="Filtrar por origen:" name='origen' onChange={e=>handelCreatedOrExisted(e)}>
+        <option disabled>Filtrar por origen:</option>
+            <option value="default">Todos</option>
           <option value="Created">Creados</option>
           <option value="Existed">Existentes</option>
         </select>
-        <select onChange={e => handleOrderByName(e)}>
-            <option>Alfabéticamente</option>
+        <select  defaultValue="Alfabéticamente:" name='alfa' onChange={e => handleOrderByName(e)}>
+            <option disable>Alfabéticamente:</option>
             <option value="asc">Aa-Zz</option>
             <option value="desc">Zz-Aa</option>
           </select>
 
 
-        <select onChange={e => handleOrderByAttack(e)}>
-          <option>Orden por Ataque</option>
+        <select  defaultValue="Orden por Ataque:" name='alfa' onChange={e => handleOrderByAttack(e)}>
+          <option disable>Orden por Ataque:</option>
           <option value="asc">Menor a mayor ataque </option>
           <option value="desc">Mayor a menor ataque </option>
         </select>
 
-        <button className={style.buttonCrear} onClick={e=>handleClick(e)}>
+        <button className={style.bu} onClick={e=>handleClick(e)}>
           Volver a cargar
       </button>
       </div>
@@ -126,22 +122,15 @@ return(
            
      <div className={style.contenedorPokemon}>       
  
-
-        
-
-
         {currentPokemons?.map((e) => {
               return (
                 <div key={e.id}>                
                  
                     <Card 
-                    
                     idPokemon={e.id} 
                     name={e.name} 
                     image={e.image} 
-                    types={e.createdInDB ? e.types?.map(t => t.name) : e.types} />
-
-                  
+                    types={e.createdInDB ? e.types?.map(t => t.name) : e.types} />           
                 </div>
             )
             })

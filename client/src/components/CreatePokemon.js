@@ -3,9 +3,9 @@ import React, { useState } from 'react'
 
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom';
+import { useHistory,Link } from 'react-router-dom';
 import { cleanCacheAll, createPokemon, getAllPokemons, getAllTypes } from './actions';
-import "./CrearPokemon.css";
+import style from "./CrearPokemon.module.css";
 
 
 export default function CrearPokemon() {
@@ -87,7 +87,7 @@ export default function CrearPokemon() {
     
 
     let eliminarOpcion = e => {
-        let filtrados = input.type?.filter(t => t !== Number(e.target.value))
+        let filtrados = input.types?.filter(t => t !== Number(e.target.value))
         setInput({
             ...input,
             types: filtrados
@@ -114,63 +114,70 @@ export default function CrearPokemon() {
     }
 
   return (
-      <div>
-        <button onClick={() => history.push("/home")} className="buttonBack"> Volver</button>
-        <form className='formCrear' onSubmit={(e)=> handleSubmit(e)}>
+      <>
+
+<div className={style.containerBack}>
+          <h1 className={style.titulo}>  Crear Pokémon </h1>
+           <Link to={`/home`}>
+            <button className={style.buttonBack}onClick={() => history.push("/home")}>{"<"} Volver</button>
+        </Link>
+     </div>
+      
+        <form  className={style.formCrear}onSubmit={(e)=> handleSubmit(e)}>
             <div>
                
-                <label>Nombre: </label>
-                <input  type="text"  className={errors.name && 'danger'} name='name' 
+                <label>   Nombre: </label>
+                <input  type="text"  className={errors.name && style.danger} name='name' 
                 value={input.name} onChange={e => handleInputChange(e)}/>
-                {errors.name && <p className='danger'>{errors.name}</p>}
+                {errors.name && <p className={style.danger}>{errors.name}</p>}
             </div>
             <br/>
             <div>
               
                 <label>HP: </label>
-                <input  type="number" className={errors.hp && 'danger'}  name='hp'
+                <input  type="number" className={errors.hp && style.danger}  name='hp'
                  value={input.hp} onChange={e => handleInputChange(e)}/>
-              {errors.hp && <p className='danger'>{errors.hp}</p>}
+              {errors.hp && <p className={style.danger}>{errors.hp}</p>}
             </div>
             <br/>
             <div>
                 
                 <label>Ataque: </label>
-                <input type="number" className={errors.attack && 'danger'} name='attack' 
+                <input type="number" className={errors.attack && style.danger} name='attack' 
                  value={input.attack}  onChange={e => handleInputChange(e)}/>
-                 {errors.attack && <p className='danger'>{errors.attack}</p>}
+                 {errors.attack && <p className={style.danger}>{errors.attack}</p>}
             </div>
             <br/>
             <div>
                 
                 <label>Defensa: </label>
-                <input  type="number" className={errors.defense && 'danger'} name='defense'
+                <input  type="number" className={errors.defense && style.danger} name='defense'
                 value={input.defense} onChange={e => handleInputChange(e)}/>
-                {errors.defense && <p className='danger'>{errors.defense}</p>}
+                {errors.defense && <p className={style.danger}>{errors.defense}</p>}
             </div>
             <br/>
             <div>
                
                 <label>Velocidad: </label>
-                <input  type="number" className={errors.speed && 'danger'} name='speed'
+                <input  type="number" className={errors.speed && style.danger} name='speed'
                 value={input.speed} onChange={e => handleInputChange(e)}/>
-                {errors.speed && <p className='danger'>{errors.speed}</p>}
+                {errors.speed && <p className={style.danger}>{errors.speed}</p>}
             </div>
             <br/>
             <div>
                 
                 <label>Altura: </label>
-                <input  type="number" className={errors.height && 'danger'} name='height'
+                <input  type="number" className={errors.height && style.danger} name='height'
                 value={input.height} onChange={e => handleInputChange(e)}/>
-                 {errors.height && <p className='danger'>{errors.height }</p>}
+                 {errors.height && <p className={style.danger}>{errors.height }</p>}
             </div>
             <br/>
             <div>
                 
                 <label>Peso: </label>
-                <input type="number" className={errors.weight && 'danger'}  name='weight'
+                <input type="number" className={errors.weight && style.danger}  name='weight'
                  value={input.weight} onChange={e => handleInputChange(e)}/>
-                {errors.weight && <p className='danger'>{errors.weight }</p>}
+                {errors.weight && <p className={style.danger}>{errors.weight }</p>}
                 
             </div>
             <br/>
@@ -196,9 +203,9 @@ export default function CrearPokemon() {
                     input.types?.map(t => {
                         let tipo = type.find(obj => obj.id === t);
                         return (
-                            <div key={tipo.id} className="contenedorTypeSelected">
+                            <div key={tipo.id} className={style.contenedorTypeSelected}>
                                 <p>{tipo.name}</p>
-                                <button className='btnTypeSelected' type='button' value={tipo.id} onClick={e => eliminarOpcion(e)}>X</button>
+                                <button className={style.btnTypeSelected} type='button' value={tipo.id} onClick={e => eliminarOpcion(e)}>X</button>
                             </div>
                         )
                     })
@@ -206,9 +213,9 @@ export default function CrearPokemon() {
             </div>
             <br/>
             <div>
-                <button disabled={!input.name || Object.keys(errors).length > 0} type="submit"  className="buttonCrear">Crear</button>
+                <button disabled={!input.name || Object.keys(errors).length > 0} type="submit"  className={style.buttonReset}>Crear Pokemon</button>
             </div>
         </form>
-    </div>
+    </>
   )
 }

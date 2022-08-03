@@ -1,0 +1,69 @@
+.formCrear {
+    display: flex;
+      
+    flex-flow:column wrap;
+    align-content: stretch;
+    align-items: flex-end;
+  
+   
+    width: 20vw;
+     margin-left : 25vw;
+     margin-top: 3vw; 
+     background-color: rgba(0, 81, 255, 0.362);
+     padding: 5em;
+     font-size: medium;
+     font-weight: bold;
+}
+.buttonReset {
+    cursor: pointer;
+    transition: .3s;
+}
+
+.buttonReset:hover {
+    background-color: #ffcc04;
+}
+p.danger {
+    color: red;
+    font-size: 15px;
+  }
+  
+input.danger {
+    border: 2px solid red;
+  }
+
+.contenedorTypeSelected {
+    display: flex;
+    justify-content: center;
+    margin: 10px auto;
+  }
+
+input{
+    width: 200px;
+}
+.containerBack{
+    display :flex;
+    
+        background-color: aliceblue;
+        
+    }
+ .titulo{
+        margin-right: auto;
+       
+    }
+   
+.buttonBack {
+    width: 140px;
+    height: 30px;
+    font-weight:bold;
+    cursor: pointer;
+    margin-top: 2em;
+    border-radius: 15px;
+    border: none;
+    background-color: darkgrey;
+    margin-left: auto;
+    
+    
+}
+.buttonBack:hover {
+    background-color:#1c7aa9eb
+}

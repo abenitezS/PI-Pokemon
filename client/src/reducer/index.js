@@ -128,7 +128,7 @@ const rootReducer = (state = initialState, action) => {
         case FILTER_TYPE:
         
             let pokesType = state.pokemonsall.filter(p => {
-                if (p.createdInDB) { if ( p.types.filter(t=> t.name === action.payload).length>0) return p}         
+                if (p.createdInDB) { if ( p.types.includes(t=> t.name === action.payload) )return p}         
                 return p.types.includes(action.payload)
                 }
             );
@@ -145,6 +145,13 @@ const rootReducer = (state = initialState, action) => {
                 pokemons: pokesType,
             }
     case FILTER_CREATED_API:
+        if (action.payload === "default") {
+            return {
+                ...state,
+                pokemons: state.pokemonsall,
+               
+            }
+        }
         let pokesOrigen=[]
         if (action.payload==='Created') {
              pokesOrigen= state.pokemonsall.filter(p=> p.createdInDB)
