@@ -127,69 +127,79 @@ export default function CrearPokemon() {
         <form  className={style.formCrear}onSubmit={(e)=> handleSubmit(e)}>
             <div>
                
-                <label>   Nombre: </label>
-                <input  type="text"  className={errors.name && style.danger} name='name' 
+                <label>Nombre </label><br/>
+                <input  type="text" placeholder='Nombre Pokémon' name='name'
+                className={errors.name? style.danger: style.inputName}  
                 value={input.name} onChange={e => handleInputChange(e)}/>
                 {errors.name && <p className={style.danger}>{errors.name}</p>}
             </div>
             <br/>
             <div>
               
-                <label>HP: </label>
-                <input  type="number" className={errors.hp && style.danger}  name='hp'
+                <label>HP </label> <br/>
+                <input  type="number" placeholder='Vida' name='hp'
+                className={errors.hp? style.danger: style.inputOtros}  
                  value={input.hp} onChange={e => handleInputChange(e)}/>
               {errors.hp && <p className={style.danger}>{errors.hp}</p>}
             </div>
             <br/>
             <div>
                 
-                <label>Ataque: </label>
-                <input type="number" className={errors.attack && style.danger} name='attack' 
+                <label>Ataque</label>  <br/>
+                <input type="number" placeholder='Ataque' name='attack' 
+                className={errors.attack? style.danger: style.inputOtros} 
                  value={input.attack}  onChange={e => handleInputChange(e)}/>
                  {errors.attack && <p className={style.danger}>{errors.attack}</p>}
             </div>
             <br/>
             <div>
                 
-                <label>Defensa: </label>
-                <input  type="number" className={errors.defense && style.danger} name='defense'
+                <label>Defensa </label> <br/>
+                <input  type="number" placeholder='Defensa' name='defense'  
+                className={errors.defense? style.danger: style.inputOtros} 
                 value={input.defense} onChange={e => handleInputChange(e)}/>
                 {errors.defense && <p className={style.danger}>{errors.defense}</p>}
             </div>
             <br/>
             <div>
                
-                <label>Velocidad: </label>
-                <input  type="number" className={errors.speed && style.danger} name='speed'
+                <label>Velocidad </label> <br/>
+                <input  type="number" name='speed'  placeholder='Velocidad'
+                className={errors.speed ? style.danger: style.inputOtros} 
                 value={input.speed} onChange={e => handleInputChange(e)}/>
                 {errors.speed && <p className={style.danger}>{errors.speed}</p>}
             </div>
             <br/>
             <div>
                 
-                <label>Altura: </label>
-                <input  type="number" className={errors.height && style.danger} name='height'
+                <label>Altura: </label> <br/>
+                <input  type="number" name='height'  placeholder='Altura'
+                className={errors.height? style.danger: style.inputOtros} 
                 value={input.height} onChange={e => handleInputChange(e)}/>
                  {errors.height && <p className={style.danger}>{errors.height }</p>}
             </div>
             <br/>
             <div>
                 
-                <label>Peso: </label>
-                <input type="number" className={errors.weight && style.danger}  name='weight'
+                <label>Peso: </label> <br/>
+                <input type="number" name='weight'  placeholder='Peso'
+                className={errors.weight? style.danger: style.inputOtros}   
                  value={input.weight} onChange={e => handleInputChange(e)}/>
                 {errors.weight && <p className={style.danger}>{errors.weight }</p>}
                 
             </div>
             <br/>
             <div>
-                <label>URL de imagen: </label>
-                <input  type="text" name="image" value={input.image} onChange={e => handleInputChange(e)} />
+                <label>URL de imagen: </label> <br/>
+                <input  type="text" name="image" placeholder='Dirección imágen'
+                className={style.inputName} value={input.image} onChange={e => handleInputChange(e)} />
+              <img className={style.imagenCard} src={input.image} alt='' />  
             </div>
             <br/>
             <div>
-                <label>Tipo/s (máx. 2): </label>
-                <select  name="type" onChange={(e) => checkTypes(e)}>
+                <label>Tipo/s (máx. 2): </label> <br/>
+                <select  name="type" className={style.inputOtros}
+                 onChange={(e) => checkTypes(e)}>
                     <option disabled >Elegir:</option>
                     {
                         type?.map(t => {
@@ -206,7 +216,8 @@ export default function CrearPokemon() {
                         return (
                             <div key={tipo.id} className={style.contenedorTypeSelected}>
                                 <p>{tipo.name}</p>
-                                <button className={style.btnTypeSelected} type='button' value={tipo.id} onClick={e => eliminarOpcion(e)}>X</button>
+                                <button className={style.btnTypeSelected} type='button' 
+                                value={tipo.id} onClick={e => eliminarOpcion(e)}>X</button>
                             </div>
                         )
                     })
@@ -214,7 +225,8 @@ export default function CrearPokemon() {
             </div>
             <br/>
             <div>
-                <button disabled={!input.name || Object.keys(errors).length > 0} type="submit"  className={style.buttonCrear}>Crear Pokemon</button>
+                <button disabled={!input.name || Object.keys(errors).length > 0} type="submit" 
+                 className={style.buttonCrear}>Crear Pokemon</button>
             </div>
         </form>
     </>

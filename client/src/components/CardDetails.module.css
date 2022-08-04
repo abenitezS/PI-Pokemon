@@ -2,10 +2,12 @@
     display :flex;
     
         background-color: aliceblue;
-        
+        padding-right: 1em;
     }
  .titulo{
-        margin-right: auto;
+    padding-right: 3em;
+    color:rgb(88, 67, 163);
+    margin: auto;
        
     }
    
@@ -14,11 +16,12 @@
     height: 30px;
     font-weight:bold;
     cursor: pointer;
-    margin-top: 2em;
-    border-radius: 15px;
+    margin-top: 0.7em;
+    margin-bottom: 0.5em;
     border: none;
     background-color: darkgrey;
-    margin-left: auto;
+    border-radius: 15px;
+    color:rgb(88, 67, 163)
     
     
 }
@@ -68,4 +71,16 @@
 
 .btnDelete {
     cursor: pointer;
+    width: 140px;
+    height: 30px;
+    font-weight:bold;
+    cursor: pointer;
+    margin-top: 2em;
+    border-radius: 15px;
+    border: none;
+    background-color: darkgrey;
+    margin-left: auto;
+}
+.btnDelete:hover {
+    background-color:#1589c384 
 }

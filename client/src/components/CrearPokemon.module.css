@@ -1,22 +1,31 @@
 .formCrear {
     display: flex;
       
-    flex-flow:column wrap;
+    flex-flow:column wrap; 
     align-content: stretch;
-    align-items: flex-end;
+    align-items: flex-start;
   
-   
-    width: 20vw;
-     margin-left : 26vw;
- 
-     background-color: rgba(0, 81, 255, 0.362);
-     padding: 1em;
-     font-size: medium;
-     font-weight: bold;
+
+    margin: 23.5px auto;
+    width: 22vw;
+    border-radius: 15px;
+    background-image: linear-gradient(178deg, #95f0dfb9 0%, #9face6bf 50%, #ffffff7d 100%);
+    box-shadow: 0px 0px 15px 2px #000000;
+    font-weight: bold;
+    padding-top: 2em; 
+    padding-left: 5em;
+  padding-bottom: 1em;
+
+}
+.inputOtros{
+    width:6em;
+    font-size: medium;
+    font-weight: bold;
+    border-radius: 9px;
 }
 .buttonCrear {
     cursor: pointer;
-    width: 130px;
+    width: 170px;
     height: 30px;
     font-weight: bold;
     color:black;
@@ -24,6 +33,7 @@
     border: none;
     transition: .3s; 
     background-color: darkgrey;
+  
 }
 
 
@@ -32,35 +42,45 @@
     border: none;
 }
 
-.buttonCreart:not(:disabled):hover {
+.buttonCrear:not(:disabled):hover {
     background-color:#1589c384 
 }
 p.danger {
     color: red;
     font-size: 15px;
+   
   }
   
 input.danger {
     border: 2px solid red;
+    border-radius: 9px;
   }
 
 .contenedorTypeSelected {
-    display: flex;
-    justify-content: center;
-    margin: 10px auto;
+  font-size: medium;
+  font-weight: bold;
+  width: 10em;
+    
   }
 
-input{
-    width: 130px;
+.inputName{
+    width: 15rem;
+    font-size: medium;
+    font-weight: bold;
+    border-radius: 9px;
+    
 }
 .containerBack{
     display :flex;
     
         background-color: aliceblue;
-        
+       padding-right: 1em;
+   
     }
  .titulo{
-        margin-right: auto;
+    padding-right: 3em;
+    color:rgb(88, 67, 163);
+        margin: auto;
        
     }
    
@@ -69,14 +89,42 @@ input{
     height: 30px;
     font-weight:bold;
     cursor: pointer;
-    margin-top: 2em;
+    margin-top: 0.7em;
+    margin-bottom: 0.5em;
     border-radius: 15px;
     border: none;
     background-color: darkgrey;
-    margin-left: auto;
+    color:rgb(88, 67, 163)
     
     
 }
 .buttonBack:hover {
     background-color:#1c7aa9b5
 }
+
+.imagenCard {
+    
+        width: 20vw auto ;
+        height: 15vw ;
+        margin: 0em;
+        
+        padding: 0em;
+         border-radius: 50px; 
+        /* filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.916)); */
+  }
+  select:hover{
+    width: 10em;
+    background-color: aquamarine;
+  }
+  .btnTypeSelected{
+    border:none;
+    border-radius:10px;
+    color: rgba(255, 0, 0, 0.677);
+    background-color: rgb(141, 188, 220);
+    font-weight: bold;
+  }
+  .btnTypeSelected:hover{
+    
+    background-color: rgb(226, 229, 232);
+    
+  }

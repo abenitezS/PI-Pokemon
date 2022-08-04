@@ -110,9 +110,9 @@ function handleClick(e){
 return(
   pokemon.error ?
     <Error404 /> :
-    // allPokemons.length < 2 ?
-    // <Loading/>
-    // :
+     allPokemons.length === 0 ?
+     <Loading/>
+     :
    <div>  
     
       <div className={style.contenedorFiltros}>
