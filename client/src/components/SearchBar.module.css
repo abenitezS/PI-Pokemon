@@ -2,7 +2,8 @@
     cursor: pointer;
     width: 130px;
     height: 30px;
-    color: black;
+    font-weight: bold;
+    color:rgb(88, 67, 163);
     border-radius: 15px;
     border: none;
     transition: .3s; 
@@ -26,6 +27,8 @@
     transition: .3s;
     border:none;
     background-color: darkgrey;
+    font-weight: bold;
+    color:rgb(88, 67, 163)
 }
 
 .buttonSearch:not(:disabled):hover {
@@ -68,6 +71,6 @@
    text-align: center;
   
    width: fit-content;
-   padding-left: 6em;
+   padding-left: 7em;
 }
 

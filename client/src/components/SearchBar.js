@@ -50,7 +50,8 @@ return (
       </div>
 
       { pokemon.error? <Redirect to={`/home/${pokemon.error}`} /> : pokemon.id &&  <Redirect to={`/home/${pokemon.id}`} />}
-   
+      {/* { pokemon.id &&  <Redirect to={`/home/${pokemon.id}`} />}  */}
+
     </div>
   );
 }

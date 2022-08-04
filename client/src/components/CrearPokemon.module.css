@@ -7,20 +7,33 @@
   
    
     width: 20vw;
-     margin-left : 25vw;
-     margin-top: 3vw; 
+     margin-left : 26vw;
+ 
      background-color: rgba(0, 81, 255, 0.362);
-     padding: 5em;
+     padding: 1em;
      font-size: medium;
      font-weight: bold;
 }
-.buttonReset {
+.buttonCrear {
     cursor: pointer;
-    transition: .3s;
+    width: 130px;
+    height: 30px;
+    font-weight: bold;
+    color:black;
+    border-radius: 15px;
+    border: none;
+    transition: .3s; 
+    background-color: darkgrey;
 }
 
-.buttonReset:hover {
-    background-color: #ffcc04;
+
+.buttonCrear:disabled {
+    cursor: not-allowed;
+    border: none;
+}
+
+.buttonCreart:not(:disabled):hover {
+    background-color:#1589c384 
 }
 p.danger {
     color: red;
@@ -38,7 +51,7 @@ input.danger {
   }
 
 input{
-    width: 200px;
+    width: 130px;
 }
 .containerBack{
     display :flex;
@@ -65,5 +78,5 @@ input{
     
 }
 .buttonBack:hover {
-    background-color:#1c7aa9eb
+    background-color:#1c7aa9b5
 }

@@ -214,7 +214,7 @@ export default function CrearPokemon() {
             </div>
             <br/>
             <div>
-                <button disabled={!input.name || Object.keys(errors).length > 0} type="submit"  className={style.buttonReset}>Crear Pokemon</button>
+                <button disabled={!input.name || Object.keys(errors).length > 0} type="submit"  className={style.buttonCrear}>Crear Pokemon</button>
             </div>
         </form>
     </>

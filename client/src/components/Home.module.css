@@ -3,8 +3,9 @@
   .contenedorPokemon {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    gap : 1rem; /*espacio entre las filas para abajo*/
     margin-top: 2rem;
+    
     
    
 }
@@ -13,10 +14,11 @@
     display: flex;
     justify-content: center;
     align-content: space-around;
-    gap: 10px;
+    gap: 3em;
     padding: 1em;
-    background-color: rgba(240, 248, 255, 0.574)
+    background-color: rgba(240, 248, 255, 0.574);
 }
+
 
 .contenedorFiltros select {
   
@@ -25,9 +27,16 @@
     height: 25px;
     border-radius: 15px;
     
-    color: black;
-    text-align: center;
+    font-weight: bold;
+    color:rgb(88, 67, 163);
+     text-align: left;
+     
 }
+   
+.contenedorFiltros select:hover {
+    background-color:#8dafbe84 ;
+    font-weight:bold;
+ }
 
 
 .contenedorFiltros button {
@@ -42,7 +51,9 @@
     cursor: pointer;
     width: 130px;
     height: 30px;
-    color: black;
+    font-weight: bold;
+    color:rgb(88, 67, 163);
+    text-align: left;
     border-radius: 15px;
     border: none;
     transition: .3s; 

@@ -40,12 +40,19 @@ useEffect(()=>{dispatch(getAllPokemons() )
 function  handlefilterType(e){
     
   dispatch(filterByType(e.target.value));
-  
+  if (e.target.value!=='Filtrar por tipo')
+  {
+   e.preventDefault();
+   document.getElementById('FilterOrigin').selectedIndex=0;
+   document.getElementById('Alfabetic').selectedIndex=0;
+   document.getElementById('OrderAttack').selectedIndex=0;
+    setCurrentPage(1);
     setFiltrados(`filtrado por Tipo ${e.target.value}`);
-  setCurrentPage(1);
+ 
   }
+}
 function handelCreatedOrExisted(e){
- if (e.target.value!=='0')
+ if (e.target.value!=='Filtrar por origen')
  {
   e.preventDefault();
   document.getElementById('FilterType').selectedIndex=0;
@@ -53,8 +60,9 @@ function handelCreatedOrExisted(e){
   document.getElementById('OrderAttack').selectedIndex=0;
 
    dispatch(filterByCreatedOrAPI(e.target.value));
+    setCurrentPage(1);
   setFiltrados(`filtrado por origen ${e.target.value}`);
-  setCurrentPage(1);
+ 
   
  }
   
@@ -62,7 +70,8 @@ function handelCreatedOrExisted(e){
 }
  
 function handleOrderByName(e){
-  if (e.target.value!=='0')
+  if (e.target.value!=='Alfabéticamente')
+
   {
    e.preventDefault();
    document.getElementById('FilterType').selectedIndex=0;
@@ -70,18 +79,19 @@ function handleOrderByName(e){
    document.getElementById('OrderAttack').selectedIndex=0;
 
   dispatch(orderByAlphabet(e.target.value));
-  setCurrentPage(1);
-  setFiltrados(`Ordenado Alfabetico ${e.target.value}`) //me sirve para que modifique el estado local y se renderice
+   setCurrentPage(1);
+  setFiltrados(`Ordenado Alfabetico ${e.target.value}`)//me sirve para que modifique el estado local y se renderice
+ 
+ 
 }
 }
 function handleOrderByAttack(e){
-  if (e.target.value!=='0')
+  if (e.target.value!=='Orden por Ataque')
   {
    e.preventDefault();
    document.getElementById('FilterType').selectedIndex=0;
    document.getElementById('Alfabetic').selectedIndex=0;
    document.getElementById('FilterOrigin').selectedIndex=0;
-  e.preventDefault()
   dispatch(orderByAttack(e.target.value));
   setCurrentPage(1);
   setFiltrados(`Ordenado Ataque ${e.target.value}`) //me sirve para que modifique el estado local y se renderice
@@ -91,21 +101,24 @@ function handleClick(e){
   e.preventDefault();
   dispatch(cleanCacheAll());
   dispatch(getAllPokemons());
+  document.getElementById('FilterType').selectedIndex=0;
+  document.getElementById('Alfabetic').selectedIndex=0;
+  document.getElementById('FilterOrigin').selectedIndex=0;
+  document.getElementById('OrderAttack').selectedIndex=0;
     }
 
 return(
   pokemon.error ?
     <Error404 /> :
-    allPokemons.length < 2 ?
-    <Loading/>
-    :
+    // allPokemons.length < 2 ?
+    // <Loading/>
+    // :
    <div>  
     
       <div className={style.contenedorFiltros}>
 
-        <select id="FilterType"  onChange={e => handlefilterType(e)}>
-          <option disabled value ='0'>Filtrar por tipo:</option>
-          <option value="default">Todos</option>
+        <select id="FilterType" defaultValue="Filtrar por tipo" onChange={e => handlefilterType(e)}>
+          <option disabled value ='Filtrar por tipo'>Filtrar por tipo:</option>
           {
             alltypes?.map(t => {
               return (
@@ -114,26 +127,26 @@ return(
             })
           }
           </select>
-        <select id="FilterOrigin"  onChange={e=>handelCreatedOrExisted(e)}>
-        <option disabled value='0' >Filtrar por origen:</option>
-            <option value="default">Todos</option>
+        <select id="FilterOrigin" defaultValue="Filtrar por origen" onChange={e=>handelCreatedOrExisted(e)}>
+        <option disabled value='Filtrar por origen' >Filtrar por origen:</option> 
+              <option value="all">Todos</option>
           <option value="Created">Creados</option>
           <option value="Existed">Existentes</option>
         </select>
-        <select  id="Alfabetic" onChange={e => handleOrderByName(e)}>
-            <option disabled value='0'>Alfabéticamente:</option>
+        <select  id="Alfabetic" defaultValue='Alfabéticamente' onChange={e => handleOrderByName(e)}>
+            <option disabled value='Alfabéticamente'>Alfabéticamente:</option>
             <option value="asc">Aa-Zz</option>
             <option value="desc">Zz-Aa</option>
           </select>
 
 
-        <select  id="OrderAttack"  onChange={e => handleOrderByAttack(e)}>
-          <option disabled value='0'>Orden por Ataque:</option>
+        <select  id="OrderAttack" defaultValue='Orden por Ataque' onChange={e => handleOrderByAttack(e)}>
+          <option disabled value='Orden por Ataque'>Orden por Ataque:</option>
           <option value="asc">Menor a mayor ataque </option>
           <option value="desc">Mayor a menor ataque </option>
         </select>
 
-        <button className={style.bu} onClick={e=>handleClick(e)}>
+        <button className={style.buttonReset} onClick={e=>handleClick(e)}>
           Volver a cargar
       </button>
       </div>

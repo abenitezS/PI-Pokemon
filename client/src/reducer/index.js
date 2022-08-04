@@ -64,7 +64,7 @@ const rootReducer = (state = initialState, action) => {
         }
         case CREATE_POKEMON:
 
-         if (action.payload.msj) {
+        if (action.payload.msj) {
 
             alert(`No se pudo crear el pokémon  ${action.payload.error}`);
                 return {
@@ -157,7 +157,7 @@ const rootReducer = (state = initialState, action) => {
                 pokemons: pokesType,
             }
     case FILTER_CREATED_API:
-        if (action.payload === "default") {
+        if (action.payload === "all") {
             return {
                 ...state,
                 pokemons: state.pokemonsall,
