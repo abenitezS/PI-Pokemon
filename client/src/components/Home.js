@@ -40,27 +40,52 @@ useEffect(()=>{dispatch(getAllPokemons() )
 function  handlefilterType(e){
     
   dispatch(filterByType(e.target.value));
+  
     setFiltrados(`filtrado por Tipo ${e.target.value}`);
   setCurrentPage(1);
   }
 function handelCreatedOrExisted(e){
-  dispatch(filterByCreatedOrAPI(e.target.value));
+ if (e.target.value!=='0')
+ {
+  e.preventDefault();
+  document.getElementById('FilterType').selectedIndex=0;
+  document.getElementById('Alfabetic').selectedIndex=0;
+  document.getElementById('OrderAttack').selectedIndex=0;
+
+   dispatch(filterByCreatedOrAPI(e.target.value));
   setFiltrados(`filtrado por origen ${e.target.value}`);
   setCurrentPage(1);
+  
+ }
+  
+ 
 }
  
 function handleOrderByName(e){
-  e.preventDefault()
+  if (e.target.value!=='0')
+  {
+   e.preventDefault();
+   document.getElementById('FilterType').selectedIndex=0;
+   document.getElementById('FilterOrigin').selectedIndex=0;
+   document.getElementById('OrderAttack').selectedIndex=0;
+
   dispatch(orderByAlphabet(e.target.value));
   setCurrentPage(1);
   setFiltrados(`Ordenado Alfabetico ${e.target.value}`) //me sirve para que modifique el estado local y se renderice
 }
-
+}
 function handleOrderByAttack(e){
+  if (e.target.value!=='0')
+  {
+   e.preventDefault();
+   document.getElementById('FilterType').selectedIndex=0;
+   document.getElementById('Alfabetic').selectedIndex=0;
+   document.getElementById('FilterOrigin').selectedIndex=0;
   e.preventDefault()
   dispatch(orderByAttack(e.target.value));
   setCurrentPage(1);
-  setFiltrados(`Ordenado Alfabetico ${e.target.value}`) //me sirve para que modifique el estado local y se renderice
+  setFiltrados(`Ordenado Ataque ${e.target.value}`) //me sirve para que modifique el estado local y se renderice
+  }
 }
 function handleClick(e){
   e.preventDefault();
@@ -78,8 +103,8 @@ return(
     
       <div className={style.contenedorFiltros}>
 
-        <select defaultValue="Filtrar por tipo:" name='order-type' onChange={e => handlefilterType(e)}>
-          <option disabled>Filtrar por tipo:</option>
+        <select id="FilterType"  onChange={e => handlefilterType(e)}>
+          <option disabled value ='0'>Filtrar por tipo:</option>
           <option value="default">Todos</option>
           {
             alltypes?.map(t => {
@@ -89,21 +114,21 @@ return(
             })
           }
           </select>
-        <select defaultValue="Filtrar por origen:" name='origen' onChange={e=>handelCreatedOrExisted(e)}>
-        <option disabled>Filtrar por origen:</option>
+        <select id="FilterOrigin"  onChange={e=>handelCreatedOrExisted(e)}>
+        <option disabled value='0' >Filtrar por origen:</option>
             <option value="default">Todos</option>
           <option value="Created">Creados</option>
           <option value="Existed">Existentes</option>
         </select>
-        <select  defaultValue="Alfabéticamente:" name='alfa' onChange={e => handleOrderByName(e)}>
-            <option disable>Alfabéticamente:</option>
+        <select  id="Alfabetic" onChange={e => handleOrderByName(e)}>
+            <option disabled value='0'>Alfabéticamente:</option>
             <option value="asc">Aa-Zz</option>
             <option value="desc">Zz-Aa</option>
           </select>
 
 
-        <select  defaultValue="Orden por Ataque:" name='alfa' onChange={e => handleOrderByAttack(e)}>
-          <option disable>Orden por Ataque:</option>
+        <select  id="OrderAttack"  onChange={e => handleOrderByAttack(e)}>
+          <option disabled value='0'>Orden por Ataque:</option>
           <option value="asc">Menor a mayor ataque </option>
           <option value="desc">Mayor a menor ataque </option>
         </select>

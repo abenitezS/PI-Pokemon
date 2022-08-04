@@ -142,7 +142,7 @@ router.get ( '/:id' , async (req, res) => {
 
             return res.json(pokemonCreate);
         } catch (error) {
-            next(error);
+            return res.status(500).json({msj: "Error al crear el Pokemon :"+error});
         }
     })
 

@@ -20,7 +20,7 @@ export function getAllPokemons() {
         return dispatch({type: GET_ALL_POKEMONS, payload: data
         })   
         } catch (error) {
-            console.log('Error en getAllPokemons '+ error)
+           alert('Error en getAllPokemons '+ error)
         }
     }
 }
@@ -62,13 +62,12 @@ export function createPokemon(values) {
     return async function(dispatch) {
         try {
             const {data} = await axios.post(`http://localhost:3001/pokemons`, values);
-            dispatch({type: DELETE_POKEMON, payload: data});
+            dispatch({type: CREATE_POKEMON, payload: data});
         } catch (error) {
-            return console.log(error);
+            return alert('No se puedo crear el Pokemon ' + error);
         }
     }
 };
-
 
 export const cleanCache = () => {
     return {type: CLEAN_CACHE}
@@ -100,7 +99,7 @@ export function deletePokemon(id) {
     return async function(dispatch) {
         try {
             await axios.delete(`http://localhost:3001/pokemons/${id}`);
-            dispatch({type: deletePokemon});
+            dispatch({type: DELETE_POKEMON});
         } catch (error) {
             console.log(error)
         }

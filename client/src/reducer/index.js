@@ -62,7 +62,19 @@ const rootReducer = (state = initialState, action) => {
             ...state,
             types: action.payload
         }
-        case CREATE_POKEMON: return {
+        case CREATE_POKEMON:
+
+         if (action.payload.msj) {
+
+            alert(`No se pudo crear el pokémon  ${action.payload.error}`);
+                return {
+                    ...state,
+                    
+                }
+            }    
+        
+            alert(`Pokemon ${action.payload.name} creado con éxito`);
+            return {
             ...state,
             pokemons: [...state.pokemons, action.payload],
             pokemonsall: [...state.pokemons, action.payload],

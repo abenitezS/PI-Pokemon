@@ -49,9 +49,10 @@ export default function CrearPokemon() {
 
 
     let handleSubmit = e => {
-        e.preventDefault();
-        dispatch(createPokemon(input));
-        alert("¡Pokémon creado correctamente!");
+           e.preventDefault();
+        //    input.name=5555
+        dispatch(createPokemon(input)); 
+         
         dispatch(cleanCacheAll());
         setInput({
             name: "",
@@ -64,7 +65,7 @@ export default function CrearPokemon() {
             image: "",
             types: []
         })
-        history.push("/home");
+       history.push("/home");
     }
 
   
