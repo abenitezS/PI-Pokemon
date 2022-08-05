@@ -32,8 +32,10 @@ const paginado = (pageNumber)=>{  // me va a servit para el renderizado
   setCurrentPage(pageNumber)
 }
 
-useEffect(()=>{dispatch(getAllPokemons() )
-  dispatch(getAllTypes())},[dispatch])
+useEffect(()=>{
+  dispatch(getAllPokemons())
+  dispatch(getAllTypes())},[dispatch]
+  )
 
 
 
@@ -110,7 +112,7 @@ function handleClick(e){
 return(
   pokemon.error ?
     <Error404 /> :
-     allPokemons.length === 0 ?
+     allPokemons.length===0 ?
      <Loading/>
      :
    <div>  

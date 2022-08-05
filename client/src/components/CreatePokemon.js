@@ -33,9 +33,9 @@ export default function CrearPokemon() {
 
 
     useEffect(() => {
-        if (pokemons.length<2) dispatch(getAllPokemons());
+         dispatch(getAllPokemons());
         dispatch(getAllTypes());
-    }, [dispatch,pokemons.length]);
+    }, [dispatch]);
 
 
     let handleInputChange = e => {
@@ -68,8 +68,9 @@ export default function CrearPokemon() {
             image: "",
             types: []
         })
-    //    history.push("/home");
-        SetCreado('Creado')
+    //     dispatch(getAllPokemons)
+    //   history.push("/home");
+       SetCreado('Creado')
     
     }
 

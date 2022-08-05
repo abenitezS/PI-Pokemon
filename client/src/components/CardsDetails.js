@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link,useHistory, useParams} from "react-router-dom"
 import {useDispatch,useSelector} from "react-redux"
-import { getPokemonById,cleanCache ,cleanCacheAll,deletePokemon} from './actions/index'
+import { getPokemonById,cleanCache ,cleanCacheAll,deletePokemon, getAllPokemons} from './actions/index'
 import  style from './CardDetails.module.css'
 import ErrorMsj from './ErrorMsj'
 import Loading from './Loading'
@@ -24,23 +24,26 @@ console.log(myPokemon)
 
 
 let cleanAndBack = () => {
-    history.push('/home')
     dispatch(cleanCache());
+    history.push('/home')
   };
 
 let handleDelete = () => {
-    history.push("/home");
-    alert("Pokémon se ha eliminado")
+     dispatch(deletePokemon(id));
     dispatch(cleanCache());
     dispatch(cleanCacheAll());
-    dispatch(deletePokemon(id));
+    dispatch(getAllPokemons())
+     history.push("/home");
+    alert("Pokémon se ha eliminado");
+    
+    
   }
  
 let i=0;
 return(
     myPokemon.error ?
     <ErrorMsj/> :
-    myPokemon.length===0 ?
+    myPokemon.length<2 ?
     <Loading/>
     :
     <>
