@@ -3,9 +3,10 @@ import React, { useState } from 'react'
 
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory,Link } from 'react-router-dom';
+import { useHistory,Link , Redirect} from 'react-router-dom';
 import { cleanCacheAll, createPokemon, getAllPokemons, getAllTypes } from './actions';
 import style from "./CrearPokemon.module.css";
+import Loading from './Loading'
 
 
 export default function CrearPokemon() {
@@ -22,6 +23,8 @@ export default function CrearPokemon() {
     })
     let [errors, setErrors] = useState({});
 
+    let[creado,SetCreado]=useState();
+
 
     const dispatch = useDispatch();
     const type = useSelector(state => state.types);
@@ -30,9 +33,9 @@ export default function CrearPokemon() {
 
 
     useEffect(() => {
-        dispatch(getAllPokemons());
+        if (pokemons.length<2) dispatch(getAllPokemons());
         dispatch(getAllTypes());
-    }, [dispatch]);
+    }, [dispatch,pokemons.length]);
 
 
     let handleInputChange = e => {
@@ -65,7 +68,9 @@ export default function CrearPokemon() {
             image: "",
             types: []
         })
-       history.push("/home");
+    //    history.push("/home");
+        SetCreado('Creado')
+    
     }
 
   
@@ -115,6 +120,9 @@ export default function CrearPokemon() {
     }
 
   return (
+    pokemons.length<1?
+    <Loading/>
+    :
       <>
 
 <div className={style.containerBack}>
@@ -124,7 +132,7 @@ export default function CrearPokemon() {
         </Link>
      </div>
       
-        <form  className={style.formCrear}onSubmit={(e)=> handleSubmit(e)}>
+        <form  className={style.formCrear} onSubmit={(e)=> handleSubmit(e)}>
             <div>
                
                 <label>Nombre </label><br/>
@@ -229,6 +237,7 @@ export default function CrearPokemon() {
                  className={style.buttonCrear}>Crear Pokemon</button>
             </div>
         </form>
+        { creado &&   <Redirect to={`/home`} />}
     </>
   )
 }
