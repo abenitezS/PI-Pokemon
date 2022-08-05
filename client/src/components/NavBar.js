@@ -10,7 +10,7 @@ export default class NavBar extends Component {
     return (
         <div className={style.contenedorNavbar}>
             <NavLink to="/pokemons">
-                <img src={titulo} alt="titulo" className='tituloNavbar'/>
+                <img src={titulo} alt="titulo" />
             </NavLink>
             <Switch>
                 <Route exact path={"/home"}>
