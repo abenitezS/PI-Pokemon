@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon -L",
-    "test": "jest --verbose"
+    "test": "jest --verbose --detectOpenHandles"
   },
   "author": "Henry",
   "license": "ISC",

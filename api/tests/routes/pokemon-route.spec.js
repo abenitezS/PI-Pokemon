@@ -11,9 +11,11 @@ describe('Crear Pokemon', () => {
 
     describe('POST /Pokemons', () => {
       it('should return status 500 and corresponding text if Pokemon  was not created', async () => {
-        const res = await request(app).post('/pokemons');
+        const res = await request(app)
+                          .post('/pokemons')
+                          .send({name:'78Agg',attack:55});
         expect(res.statusCode).toBe(500);
-        expect(res.json).toBe(undefined);
+        expect(res.text).toContain("Error al crear el Pokemon ");
       });
   
       it('should return status 201 and pokemon object if pokemon was succesfully created', async () => {
@@ -35,7 +37,7 @@ describe('Crear Pokemon', () => {
         }));
       });
      afterAll(async() => {
-   await conn.close(); 
+    conn.close(); 
     })
   
     
