@@ -1,4 +1,4 @@
-const { Pokemon, conn } = require('../../src/db.js');x
+const { Pokemon, conn } = require('../../src/db.js');
 
 describe('Pokemon Model', () => {
     beforeAll(async () => {

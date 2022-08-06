@@ -140,9 +140,9 @@ router.get ( '/:id' , async (req, res) => {
                 if (foundType) pokemonCreate.addType(foundType)
             })
 
-            return res.json(pokemonCreate);
+            return res.status(201).json(pokemonCreate);
         } catch (error) {
-            return res.status(500).json({msj: "Error al crear el Pokemon :"+error});
+            return res.status(500).json({msj: "Error al crear el Pokemon "});
         }
     })
 
