@@ -39,10 +39,6 @@ describe('Crear Pokemon', () => {
      afterAll(async() => {
     conn.close(); 
     })
-  
-    
-
- 
 
   })
 

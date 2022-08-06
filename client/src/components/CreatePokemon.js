@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory,Link , Redirect} from 'react-router-dom';
+import { useHistory,Link } from 'react-router-dom';
 import { cleanCacheAll, createPokemon, getAllPokemons, getAllTypes } from './actions';
 import style from "./CrearPokemon.module.css";
 import Loading from './Loading'
@@ -23,7 +23,7 @@ export default function CrearPokemon() {
     })
     let [errors, setErrors] = useState({});
 
-    let[creado,SetCreado]=useState();
+    // let[creado,SetCreado]=useState();
 
 
     const dispatch = useDispatch();
@@ -55,8 +55,7 @@ export default function CrearPokemon() {
            e.preventDefault();
         //    input.name=5555
         dispatch(createPokemon(input)); 
-         
-        dispatch(cleanCacheAll());
+        dispatch(cleanCacheAll)
         setInput({
             name: "",
             hp: "",
@@ -68,11 +67,18 @@ export default function CrearPokemon() {
             image: "",
             types: []
         })
-    //     dispatch(getAllPokemons)
+     
     //   history.push("/home");
-       SetCreado('Creado')
+    //    SetCreado('Creado')
     
     }
+    let handleBack=(e) =>{
+        e.preventDefault();
+  
+      history.push("/home");
+    //    SetCreado('Creado')
+
+    } 
 
   
     let validate = input => {
@@ -129,7 +135,7 @@ export default function CrearPokemon() {
 <div className={style.containerBack}>
           <h1 className={style.titulo}>  Crear Pokémon </h1>
            <Link to={`/home`}>
-            <button className={style.buttonBack}onClick={() => history.push("/home")}>{"<"} Volver</button>
+            <button className={style.buttonBack}onClick={e=>handleBack(e)}>{"<"} Volver</button>
         </Link>
      </div>
       
@@ -238,7 +244,7 @@ export default function CrearPokemon() {
                  className={style.buttonCrear}>Crear Pokemon</button>
             </div>
         </form>
-        { creado &&   <Redirect to={`/home`} />}
+        {/* { creado &&   <Redirect to={`/home`} />} */}
     </>
   )
 }

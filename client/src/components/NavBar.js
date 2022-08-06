@@ -5,8 +5,8 @@ import { Switch, Route, NavLink } from 'react-router-dom'
 import style from './NavBar.module.css'
 
 
-export default class NavBar extends Component {
-  render() {
+export default function NavBar() {
+ 
     return (
         <div className={style.contenedorNavbar}>
             <NavLink to="/pokemons">
@@ -19,5 +19,4 @@ export default class NavBar extends Component {
             </Switch>
         </div>
     )
-  }
-}
+    }

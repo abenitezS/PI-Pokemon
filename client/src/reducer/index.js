@@ -93,7 +93,7 @@ const rootReducer = (state = initialState, action) => {
            
         }
         case ORDER_ALPHABET:
-            let pokesAlpha=state.pokemonsall;
+            let pokesAlpha=state.pokemons;
             if (action.payload === "asc") {
                 pokesAlpha = pokesAlpha.sort((a, b) => {
                     if (a.name > b.name) return 1;
@@ -114,7 +114,7 @@ const rootReducer = (state = initialState, action) => {
                 
             }
             case ORDER_ATTACK:
-                let pokesAttack=state.pokemonsall;
+                let pokesAttack=state.pokemons;
                 if (action.payload === "asc") {
                     pokesAttack = pokesAttack.sort((a, b) => {
                         if (a.attack > b.attack) return 1;
@@ -138,9 +138,15 @@ const rootReducer = (state = initialState, action) => {
 
 
         case FILTER_TYPE:
-        
-            let pokesType = state.pokemonsall.filter(p => {
-                if (p.createdInDB) { if ( p.types.includes(t=> t.name === action.payload) )return p}         
+            if (action.payload === "all") {
+                return {
+                    ...state,
+                    pokemons: state.pokemonsall,
+                   
+                }
+            }
+            let pokesType = state.pokemons.filter(p => {
+                if (p.createdInDB) { if ( p.types.find( p=>p.name === action.payload))return p}         
                 return p.types.includes(action.payload)
                 }
             );

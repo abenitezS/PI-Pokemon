@@ -76,9 +76,9 @@ function handleOrderByName(e){
 
   {
    e.preventDefault();
-   document.getElementById('FilterType').selectedIndex=0;
-   document.getElementById('FilterOrigin').selectedIndex=0;
-   document.getElementById('OrderAttack').selectedIndex=0;
+  //  document.getElementById('FilterType').selectedIndex=0;
+  //  document.getElementById('FilterOrigin').selectedIndex=0;
+  document.getElementById('OrderAttack').selectedIndex=0;
 
   dispatch(orderByAlphabet(e.target.value));
    setCurrentPage(1);
@@ -91,9 +91,9 @@ function handleOrderByAttack(e){
   if (e.target.value!=='Orden por Ataque')
   {
    e.preventDefault();
-   document.getElementById('FilterType').selectedIndex=0;
-   document.getElementById('Alfabetic').selectedIndex=0;
-   document.getElementById('FilterOrigin').selectedIndex=0;
+  //  document.getElementById('FilterType').selectedIndex=0;
+  document.getElementById('Alfabetic').selectedIndex=0;
+  //  document.getElementById('FilterOrigin').selectedIndex=0;
   dispatch(orderByAttack(e.target.value));
   setCurrentPage(1);
   setFiltrados(`Ordenado Ataque ${e.target.value}`) //me sirve para que modifique el estado local y se renderice
@@ -121,6 +121,7 @@ return(
 
         <select id="FilterType" defaultValue="Filtrar por tipo" onChange={e => handlefilterType(e)}>
           <option disabled value ='Filtrar por tipo'>Filtrar por tipo:</option>
+          <option value="all">Todos</option>
           {
             alltypes?.map(t => {
               return (
