@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import SearchBar from './SearchBar'
 import titulo from '../img/tituloPokemon.png'
 import { Switch, Route, NavLink } from 'react-router-dom'

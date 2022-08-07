@@ -11,7 +11,9 @@ export default function Paginado({pokemonsPerPage, allPokemons, paginado,current
                 {pageNumbers && 
                 pageNumbers.map(number=> (
                     <ul className={style.pag_a} key={number}>
-                        <button type="Submit" className={currentPage === number ? style.btnActive : style.btnPagination} onClick={()=>paginado(number)}>{number}</button>
+                        <button type="Submit" 
+                        className={currentPage === number ? style.btnActive : 
+                        style.btnPagination} onClick={()=>paginado(number)}>{number}</button>
                     </ul>
                 ))}
             </ul>

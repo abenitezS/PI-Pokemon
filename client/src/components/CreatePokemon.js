@@ -68,7 +68,7 @@ export default function CrearPokemon() {
             types: []
         })
      
-    //   history.push("/home");
+     history.push("/home");
     //    SetCreado('Creado')
     
     }

@@ -172,10 +172,10 @@ const rootReducer = (state = initialState, action) => {
         }
         let pokesOrigen=[]
         if (action.payload==='Created') {
-             pokesOrigen= state.pokemonsall.filter(p=> p.createdInDB)
+             pokesOrigen= state.pokemons.filter(p=> p.createdInDB)
         }
         else {
-             pokesOrigen =state.pokemonsall.filter(p=>!p.hasOwnProperty("createdInDB"))
+             pokesOrigen =state.pokemons.filter(p=>!p.hasOwnProperty("createdInDB"))
         }
         //console.log(pokesOrigen);
         if (pokesOrigen.length === 0) {

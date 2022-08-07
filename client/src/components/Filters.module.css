@@ -1,16 +1,4 @@
-
-
-  .contenedorPokemon {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap : 1rem; /*espacio entre las filas para abajo*/
-    margin-top: 2rem;
-    
-    
-   
-}
-
-/* .contenedorFiltros {
+.contenedorFiltros {
     display: flex;
     justify-content: center;
     align-content: space-around;
@@ -36,18 +24,17 @@
 .contenedorFiltros select:hover {
     background-color:#8dafbe84 ;
     font-weight:bold;
- } */
+ }
 
-/* 
+
 .contenedorFiltros button {
     border-radius: 15px;
     border:none;
     height: 25px;
     
    
-} */
-
-/* .buttonReset {
+}
+.buttonReset {
     cursor: pointer;
     width: 130px;
     height: 30px;
@@ -61,8 +48,8 @@
     cursor: pointer;
    
 }
-
 .buttonReset:hover {
-   background-color:#1589c384 
-} */
-
+    background-color:#1589c384 
+ }
+ 
+   
