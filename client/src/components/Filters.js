@@ -1,8 +1,7 @@
 import React from 'react'
-import {useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {filterByCreatedOrAPI, filterByType, getAllPokemons,
-  getAllTypes,orderByAlphabet, orderByAttack,cleanCacheAll} from '../components/actions/index'
+ orderByAlphabet, orderByAttack,cleanCacheAll} from '../components/actions/index'
 import style from './Filters.module.css'
 
 

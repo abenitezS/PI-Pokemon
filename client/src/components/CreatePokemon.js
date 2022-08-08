@@ -1,13 +1,12 @@
 
 import React, { useState } from 'react'
-
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory,Link } from 'react-router-dom';
-import { cleanCacheAll, createPokemon, getAllPokemons, getAllTypes } from './actions';
+import { cleanCacheAll, createPokemon, getAllPokemons,
+    getPokemonByName, getAllTypes } from './actions';
 import style from "./CrearPokemon.module.css";
 import Loading from './Loading'
-
 
 export default function CrearPokemon() {
     let [input, setInput] = useState({
@@ -23,14 +22,12 @@ export default function CrearPokemon() {
     })
     let [errors, setErrors] = useState({});
 
-    // let[creado,SetCreado]=useState();
-
-
     const dispatch = useDispatch();
     const type = useSelector(state => state.types);
     const pokemons = useSelector(state => state.pokemons);
     const history = useHistory();
-
+    
+    let pokemon = useSelector(state => state.pokemon);
 
     useEffect(() => {
          dispatch(getAllPokemons());
@@ -54,8 +51,11 @@ export default function CrearPokemon() {
     let handleSubmit = e => {
            e.preventDefault();
         //    input.name=5555
-        dispatch(createPokemon(input)); 
+        dispatch(createPokemon(input));
+         dispatch(getPokemonByName(input.name.toLowerCase()))
         dispatch(cleanCacheAll)
+        dispatch(getAllPokemons)
+        
         setInput({
             name: "",
             hp: "",
@@ -67,16 +67,16 @@ export default function CrearPokemon() {
             image: "",
             types: []
         })
-     
-     history.push("/home");
-    //    SetCreado('Creado')
+        
+     history.push(`/home/${pokemon.id}`);
+    // //    SetCreado('Creado')
     
     }
     let handleBack=(e) =>{
         e.preventDefault();
-  
-      history.push("/home");
-    //    SetCreado('Creado')
+        
+     history.push("/home");
+      //SetCreado('Creado')
 
     } 
 
@@ -113,13 +113,11 @@ export default function CrearPokemon() {
             alert("No puedes elegir más de dos tipos")
             return null;
         }
-
         for (let i of input.types) {
             if (Number(e.target.value) === i) {
                 return alert("No puedes elegir dos veces el mismo tipo");
             }
         }
-    
         setInput({
             ...input,
             types: [...input.types, Number(e.target.value)]
@@ -148,7 +146,7 @@ export default function CrearPokemon() {
                 value={input.name} onChange={e => handleInputChange(e)}/>
                 {errors.name && <p className={style.danger}>{errors.name}</p>}
             </div>
-            <br/>
+            
             <div>
               
                 <label>HP </label> <br/>
@@ -157,7 +155,7 @@ export default function CrearPokemon() {
                  value={input.hp} onChange={e => handleInputChange(e)}/>
               {errors.hp && <p className={style.danger}>{errors.hp}</p>}
             </div>
-            <br/>
+          
             <div>
                 
                 <label>Ataque</label>  <br/>
@@ -166,7 +164,7 @@ export default function CrearPokemon() {
                  value={input.attack}  onChange={e => handleInputChange(e)}/>
                  {errors.attack && <p className={style.danger}>{errors.attack}</p>}
             </div>
-            <br/>
+            
             <div>
                 
                 <label>Defensa </label> <br/>
@@ -175,7 +173,7 @@ export default function CrearPokemon() {
                 value={input.defense} onChange={e => handleInputChange(e)}/>
                 {errors.defense && <p className={style.danger}>{errors.defense}</p>}
             </div>
-            <br/>
+           
             <div>
                
                 <label>Velocidad </label> <br/>
@@ -184,7 +182,7 @@ export default function CrearPokemon() {
                 value={input.speed} onChange={e => handleInputChange(e)}/>
                 {errors.speed && <p className={style.danger}>{errors.speed}</p>}
             </div>
-            <br/>
+            
             <div>
                 
                 <label>Altura: </label> <br/>
@@ -193,7 +191,7 @@ export default function CrearPokemon() {
                 value={input.height} onChange={e => handleInputChange(e)}/>
                  {errors.height && <p className={style.danger}>{errors.height }</p>}
             </div>
-            <br/>
+            
             <div>
                 
                 <label>Peso: </label> <br/>
@@ -203,7 +201,7 @@ export default function CrearPokemon() {
                 {errors.weight && <p className={style.danger}>{errors.weight }</p>}
                 
             </div>
-            <br/>
+            
             <div>
                 <label>URL de imagen: </label> <br/>
                 <input  type="text" name="image" placeholder='Dirección imágen'
@@ -244,7 +242,7 @@ export default function CrearPokemon() {
                  className={style.buttonCrear}>Crear Pokemon</button>
             </div>
         </form>
-        {/* { creado &&   <Redirect to={`/home`} />} */}
+        
     </>
   )
 }
