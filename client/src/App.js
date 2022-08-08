@@ -9,8 +9,7 @@ import NavBar from './components/NavBar.js';
 function App() {
   return (
    <BrowserRouter>
-   <div>
-   
+   <div> 
     <Switch >
       
       <Route  path="/home/:id">
@@ -24,18 +23,18 @@ function App() {
         <NavBar /> 
         <Home/>
       </Route>
+
       <Route path='/Pokemon'>    
-      <NavBar /> 
+        <NavBar /> 
         <CreatePokemon/>
       </Route>
 
       <Route path="*" component={LandingPage}/>
   
-     </Switch>
+    </Switch>
 
     </div>
-    
-    </BrowserRouter>     
+   </BrowserRouter>     
   );
 }
 export default App;
