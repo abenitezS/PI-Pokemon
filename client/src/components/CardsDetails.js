@@ -61,12 +61,16 @@ return(
              <img className={style.imagenCard} src={myPokemon.image} alt='img not found' />  
                 
            <div className={style.tipoDetails}>
-             {myPokemon.types?.map((t) => {
+
+            <div className={style.cardDetail}>
+              {myPokemon.types?.map((t) => {
                i++;
-              return <div key={i} className={style.CardDetail}> {myPokemon.createdInDB ? t.name : t} </div>;
+              return <div key={i} > {myPokemon.createdInDB ? t.name : t} </div>;
                 })
                
             }
+            </div>
+             
             <h4>Estadisticas</h4>
             </div >
             <div className={style.contenedorDetails2}>
@@ -75,8 +79,8 @@ return(
             <div>Defensa: {myPokemon.defense}</div>
             <div>Velocidad: {myPokemon.speed}</div>
             </div>
-            <h5>Altura: {myPokemon.height}</h5>   
-            <h5>Peso: {myPokemon.weight} </h5>
+            <h4>Altura: {myPokemon.height}</h4>   
+            <h4>Peso: {myPokemon.weight} </h4>
           </div>    
          }
        

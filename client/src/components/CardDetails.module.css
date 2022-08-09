@@ -1,26 +1,26 @@
 .containerBack{
     display :flex;
-    
-        background-color: aliceblue;
-        padding-right: 1em;
+    flex-wrap: wrap;
+    background-color: aliceblue;
+    padding-right: 1em;
     }
+
  .titulo{
     padding-right: 3em;
     color:rgb(88, 67, 163);
-    margin: auto;
-       
+    margin: auto;   
     }
    
 .buttonBack {
-    width: 140px;
-    height: 30px;
+    width: 9rem;
+    height: 1.9rem;
     font-weight:bold;
     cursor: pointer;
     margin-top: 0.7em;
     margin-bottom: 0.5em;
     border: none;
     background-color: darkgrey;
-    border-radius: 15px;
+    border-radius: 1rem;
     color:rgb(88, 67, 163)
     
     
@@ -33,60 +33,58 @@
     display: grid;
     justify-content: center;
     text-align: center;
-    margin: 23.5px auto;
-    width: 20rem;
-   border-radius: 1.5rem;
-    background-image: linear-gradient(178deg, #95f0dfb9 0%, #9face6bf 50%, #ffffff7d 100%);
+    margin:1.5rem auto; 
+    width: 30rem;
+    border-radius: 1rem;
+    background-image: linear-gradient(178deg, #95f0dfb9 0%, #9face6d3 50%, #ffffffb9 100%);
     box-shadow: 0px 0px 15px 2px #000000;
     font-weight: bold;
-  margin-bottom: 5rem;
-    padding-top: 1rem;
+    margin-bottom: 5rem;
+    padding-top: .5rem;
+  }  
 
-
-
-    
-}
-
-.tiposDetails {
-    display: inline-flex;
-    gap: 5px;
-    
-}
 
 .contenedorDetails2 {
     display: grid;
-    grid-template-columns: 150px 150px;
+    grid-template-columns: auto auto   ;
+    align-items: left;
+
+}
+.contenedorDetails2 > div {
+    text-align: left;
+    padding: 0.2rem ;
 }
 
 .imagenCard {
-    
-        width: 20vw auto ;
-        height: 15vw ;
-        margin: 0em;
-        
-        padding: 0em;
-         border-radius: 50px; 
-        /* filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.916)); */
+    width: 15rem  ;
+    height: 15rem;
+    background-color: rgba(46, 133, 151, 0.488);
+    border-radius: 1rem
   }
 
-
 .contenedorDelete {
-    margin: 20px auto;
+    margin: 1.25rem auto;
     text-align: center;
 }
 
 .btnDelete {
     cursor: pointer;
-    width: 140px;
-    height: 30px;
+    width: 9rem;
+    height: 1.9rem;
     font-weight:bold;
     cursor: pointer;
     margin-top: 2em;
-    border-radius: 15px;
+    border-radius: 1rem;
     border: none;
     background-color: darkgrey;
     margin-left: auto;
 }
 .btnDelete:hover {
     background-color:#1589c384 
+}
+.cardDetail{
+   display: flex;
+   justify-content: space-around;
+    align-content: center;
+    font-size: large;
 }

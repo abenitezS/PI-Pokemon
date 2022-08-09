@@ -1,20 +1,18 @@
 .formCrear {
-    display: flex;
-      
+    display: grid;
     flex-flow:column wrap; 
     align-content: stretch;
     align-items: flex-start;
-  
-
     margin: 23.5px auto;
-    width: 22vw;
-    border-radius: 15px;
+    width: 20rem;
+    border-radius: 1.5rem;
     background-image: linear-gradient(178deg, #95f0dfb9 0%, #9face6bf 50%, #ffffff7d 100%);
     box-shadow: 0px 0px 15px 2px #000000;
     font-weight: bold;
-    padding-top: 1em; 
-    padding-left: 5em;
-  padding-bottom: 1em;
+     padding-top: 1rem; 
+    padding-left: 2rem; 
+    padding-bottom: 1rem; 
+  justify-content: center;
 
 }
 .inputOtros{
@@ -27,17 +25,15 @@
 
 .buttonCrear {
     cursor: pointer;
-    width: 170px;
-    height: 30px;
+    width: 10.5rem;
+    height: 2rem;
     font-weight: bold;
     color:black;
     border-radius: 15px;
     border: none;
     transition: .3s; 
     background-color: darkgrey;
-  
 }
-
 
 .buttonCrear:disabled {
     cursor: not-allowed;
@@ -49,7 +45,7 @@
 }
 p.danger {
     color: red;
-    font-size: 15px;
+    /* font-size:1rem; */
    
   }
   
@@ -59,12 +55,29 @@ input.danger {
   }
 
 .contenedorTypeSelected {
+  display: flex;
+  align-content: center;
+  display: wrap;
   font-size: medium;
   font-weight: bold;
-  width: 10em;
-  
-  
-    
+  justify-content: space-around;
+  }
+  .contenedortype{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .btnTypeSelected{
+    border:none;
+    border-radius:1rem;
+    padding-left: 0.3rem;
+    margin-left: 0.5rem;
+    color: rgba(255, 0, 0, 0.677);
+    background-color: rgb(141, 188, 220);
+    font-weight: bold;
+  }
+  .btnTypeSelected:hover{
+    background-color: rgb(226, 229, 232);
   }
 
 .inputName{
@@ -76,9 +89,9 @@ input.danger {
 }
 .containerBack{
     display :flex;
-    
-        background-color: aliceblue;
-       padding-right: 1em;
+    flex-wrap: wrap;
+    background-color: aliceblue;
+    padding-right: 1em;
    
     }
  .titulo{
@@ -89,13 +102,13 @@ input.danger {
     }
    
 .buttonBack {
-    width: 140px;
-    height: 30px;
+    width: 9rem;
+    height: 1.9rem;
     font-weight:bold;
     cursor: pointer;
     margin-top: 0.7em;
     margin-bottom: 0.5em;
-    border-radius: 15px;
+    border-radius: 1rem;
     border: none;
     background-color: darkgrey;
     color:rgb(88, 67, 163)
@@ -108,8 +121,8 @@ input.danger {
 
 .imagenCard {
     
-        width: 20vw auto ;
-        height: 15vw ;
+        width: 10rem auto ;
+        height: 10rem ;
         margin: 0em;
         
         padding: 0em;
@@ -119,16 +132,4 @@ input.danger {
   select:hover{
     width: 10em;
     background-color: aquamarine;
-  }
-  .btnTypeSelected{
-    border:none;
-    border-radius:10px;
-    color: rgba(255, 0, 0, 0.677);
-    background-color: rgb(141, 188, 220);
-    font-weight: bold;
-  }
-  .btnTypeSelected:hover{
-    
-    background-color: rgb(226, 229, 232);
-    
   }

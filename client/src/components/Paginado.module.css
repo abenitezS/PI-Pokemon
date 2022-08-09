@@ -1,34 +1,37 @@
 
 .contenedorPaginado {
 
-padding: 0.15em;
-background-color: rgba(146, 154, 161, 0.585)
+padding: 0.5rem;
+background-color: rgba(146, 154, 161, 0.585);
+
+
 }
 .pag_ul {
-  list-style: none;
+ 
   display: flex;
   justify-content: center;
-  gap: 5px;
-  margin: 10px auto;
+  align-items: center;
+  font-size:large;
  
 }
 
 .contenedorPaginado ul button {
+
   cursor: pointer;
-  width: 50px;
-
-  height: 30px;
-
-  text-align: center;
-  border-radius: 10px;
+  width: 7rem;
+  height: 10rem;
+  
+  border-radius: 0.7rem;
   transition: .3s;
+
+ 
 
 }
 
-
-
-
 .btnActive {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 1rem;
   background-color: #faf60a;
   border: none;
 }
@@ -38,6 +41,11 @@ background-color: rgba(146, 154, 161, 0.585)
 
 .btnPagination
  {
+  width: 2rem;
+  height: 2rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem ;
+  border-radius: 0.5rem;
   background-color: #ffcd0469;
   border: none;
 }

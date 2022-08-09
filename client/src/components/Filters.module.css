@@ -1,19 +1,20 @@
 .contenedorFiltros {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-content: space-around;
-    gap: 3em;
+    gap: 1rem;
     padding: 1em;
     background-color: rgba(240, 248, 255, 0.574);
 }
 
 
 .contenedorFiltros select {
-  
+   width: 10rem;
     background-color: white;
-    border: 0.05px  rgb(109, 103, 103);
-    height: 25px;
-    border-radius: 15px;
+    border :none;
+    height: 1.6rem;
+    border-radius: 1rem;
     
     font-weight: bold;
     color:rgb(88, 67, 163);
@@ -28,20 +29,22 @@
 
 
 .contenedorFiltros button {
-    border-radius: 15px;
+    border-radius: 1rem ;
     border:none;
-    height: 25px;
+    height: 1.6rem;
+    width: 10rem;
+    text-align: center;
     
    
 }
 .buttonReset {
     cursor: pointer;
-    width: 130px;
-    height: 30px;
+    width: 9rem;
+    height: 1.9rem;
     font-weight: bold;
     color:rgb(88, 67, 163);
     text-align: left;
-    border-radius: 15px;
+    border-radius: 1rem;
     border: none;
     transition: .3s; 
     background-color: darkgrey;

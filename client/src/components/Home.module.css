@@ -1,10 +1,4 @@
-
-
   .contenedorPokemon {
-    /* display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap : 1rem; /*espacio entre las filas para abajo
-    margin-top: 2rem; */
     
     display: flex;
 	flex-wrap: wrap;

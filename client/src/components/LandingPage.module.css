@@ -1,7 +1,7 @@
 .contenedorLanding {
     
     
-    min-height: 100vh;
+   min-width:  100vh;
     text-align: center;
     color: rgb(30, 2, 103);
     /* background: url('https://thumbs.dreamstime.com/z/pokemon-va-bola-del-logotipo-dibujada-en-el-asfalto-74497548.jpg') 
@@ -11,7 +11,7 @@
 }
 
 .contenedorLanding h1{
-    width: 100vw;
+    width: auto;
   font-weight: bold;
   font-size: 4rem;  
 }
@@ -23,15 +23,15 @@
 
 .btnIngresar {
     cursor: pointer;
-    width: 200px;
-    height: 50px;
+    width: 12.5rem;
+    height: 4rem;
     font-weight: bold;
     font-size: larger;
     color:rgb(242, 240, 248);
-    border-radius: 15px;
+    border-radius: 1rem;
     border: none;
     transition: .3s; 
-    background-color: rgb(109, 131, 180);
+    background-color: rgba(57, 34, 174, 0.674);
 }
 
 .btnIngresar:hover {

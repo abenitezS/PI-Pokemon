@@ -1,7 +1,7 @@
 .buttonCrear {
     cursor: pointer;
-    width: 130px;
-    height: 30px;
+    width: 10rem ;
+    height: 1.9rem;
     font-weight: bold;
     color:rgb(88, 67, 163);
     border-radius: 15px;
@@ -21,9 +21,9 @@
 
 .buttonSearch {
     cursor: pointer;
-    width: 62px;
-    height: 30px;
-    border-radius: 15px;
+    width: 9rem ;
+    height: 1.9rem;
+    border-radius: 1rem;
     transition: .3s;
     border:none;
     background-color: darkgrey;
@@ -41,14 +41,15 @@
 }
 
 .inputSearch {
-    border: 0;
+    border: none;
     background-color: white;
-    border: 0.05px  rgb(109, 103, 103);
-    height: 25px;
-    border-radius: 15px;
+    width: 16rem;
+    height: 1.9rem;
+    border-radius: 1rem;
     
     color: black;
     text-align: center;
+    
 }
 
 .inputSearch::placeholder {
@@ -61,16 +62,20 @@
 
 .contenedorSearchbar {
     display: flex;
-    flex-direction: row;
-   justify-content: center;
-   padding-top: 2em;
-   padding-bottom: 1em;
+    flex-wrap: wrap;
+     justify-content: space-evenly;
+    
+   padding-top: 0.5rem;
+   padding-bottom: 0.5em;
+   padding-left: 20rem;
+   ;
+      
 }
 
 .contenedorButtonCrear {
    text-align: center;
   
    width: fit-content;
-   padding-left: 7em;
+  
 }
 

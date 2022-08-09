@@ -7,7 +7,7 @@ import style from './Card.module.css'
     return (
         <div className={style.contenedorCard}>
            <Link  className={style.navlink} to={`/home/${idPokemon} `}>
-             <h6>{idPokemon}</h6>
+             <h5>{idPokemon}</h5>
               <h3 className={style.nombreCard} >{name.toUpperCase()}</h3> 
                <img className={style.imagenCard} src={image} alt='img not found' />  
               { types?.map((t) => {

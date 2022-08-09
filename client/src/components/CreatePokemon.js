@@ -215,19 +215,24 @@ export default function CrearPokemon() {
                         })
                     }
                 </select>
+                 <div className={style.contenedorTypeSelected}>
                 {
+                   
                     /*Acá me renderiza los nombres de los tipos seleccionados*/
+                    
                     input.types?.map(t => {
                         let tipo = type.find(obj => obj.id === t);
                         return (
-                            <div key={tipo.id} className={style.contenedorTypeSelected}>
+                            <div key={tipo.id} className={style.contenedortype}>
                                 <p>{tipo.name}</p>
                                 <button className={style.btnTypeSelected} type='button' 
                                 value={tipo.id} onClick={e => eliminarOpcion(e)}>X</button>
                             </div>
                         )
                     })
+                    
                 }
+                </div>
             </div>
             <br/>
             <div>
