@@ -2,12 +2,13 @@
 .contenedorCard {
       display: flex;
       flex-direction: column ;
-      width: 15vw;
-     height: 25vw;
+   
+      width: 20rem;
+    	height: 27rem; 
      
       border: 1px solid var(--border-color);
    
-      gap: 5rem;
+    
       align-items: center;
       opacity: 10;
       align-content:space-around;
@@ -16,8 +17,13 @@
     
       border-radius: 1.5rem;
       font-size: medium;
-      margin-left: 2rem;
-     
+       
+   
+      margin-bottom: 5rem;
+      padding-top: 1rem;
+      border-radius: 1rem;
+      
+	
     }
 
 
@@ -28,12 +34,12 @@
 
 .imagenCard {
     
-    width: 160x auto ;
-    height: 160px ;
+    width: 10rem auto ;
+    height: 10rem ;
     margin: 0em;
     
     padding: 0em;
-     border-radius: 50px; 
+     border-radius: 1rem; 
     /* filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.916)); */
 }
 

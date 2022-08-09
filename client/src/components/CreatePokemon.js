@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory,Link } from 'react-router-dom';
 import { cleanCacheAll, createPokemon, getAllPokemons,
-    getPokemonByName, getAllTypes } from './actions';
+     getAllTypes } from './actions';
 import style from "./CrearPokemon.module.css";
 import Loading from './Loading'
 
@@ -27,7 +27,6 @@ export default function CrearPokemon() {
     const pokemons = useSelector(state => state.pokemons);
     const history = useHistory();
     
-    let pokemon = useSelector(state => state.pokemon);
 
     useEffect(() => {
          dispatch(getAllPokemons());
@@ -52,7 +51,6 @@ export default function CrearPokemon() {
            e.preventDefault();
         //    input.name=5555
         dispatch(createPokemon(input));
-         dispatch(getPokemonByName(input.name.toLowerCase()))
         dispatch(cleanCacheAll)
         dispatch(getAllPokemons)
         
@@ -66,18 +64,13 @@ export default function CrearPokemon() {
             weight: "",
             image: "",
             types: []
-        })
-        
-     history.push(`/home/${pokemon.id}`);
-    // //    SetCreado('Creado')
-    
+        })     
+    history.push(`/home`);
     }
     let handleBack=(e) =>{
         e.preventDefault();
         
      history.push("/home");
-      //SetCreado('Creado')
-
     } 
 
   
@@ -125,7 +118,7 @@ export default function CrearPokemon() {
     }
 
   return (
-    pokemons.length<1?
+    pokemons.length<2?
     <Loading/>
     :
       <>
@@ -242,7 +235,7 @@ export default function CrearPokemon() {
                  className={style.buttonCrear}>Crear Pokemon</button>
             </div>
         </form>
-        
+       
     </>
   )
 }
