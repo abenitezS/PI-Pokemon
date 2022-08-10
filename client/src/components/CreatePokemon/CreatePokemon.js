@@ -47,13 +47,13 @@ export default function CrearPokemon() {
     }
 
 
-    let handleSubmit = e => {
+    async function handleSubmit(e)  {
            e.preventDefault();
         //    input.name=5555
-        dispatch(createPokemon(input));
+       await dispatch(createPokemon(input));
         dispatch(cleanCacheAll)
-        dispatch(getAllPokemons)
-        
+       await dispatch(getAllPokemons)
+        alert (`Pokemon ${input.name} creado`);
         setInput({
             name: "",
             hp: "",
@@ -65,7 +65,7 @@ export default function CrearPokemon() {
             image: "",
             types: []
         })     
-   // history.push(`/home`);
+   history.push(`/home`);
     }
     let handleBack=(e) =>{
         e.preventDefault();
@@ -124,7 +124,7 @@ export default function CrearPokemon() {
       <>
 
 <div className={style.containerBack}>
-          <h1 className={style.titulo}>  Crear Pokémon </h1>
+          <h1 className={style.titulo}> Crear Pokémon </h1>
            <Link to={`/home`}>
             <button className={style.buttonBack}onClick={e=>handleBack(e)}>{"<"} Volver</button>
         </Link>

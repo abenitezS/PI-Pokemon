@@ -73,7 +73,6 @@ const rootReducer = (state = initialState, action) => {
                 }
             }    
         
-            alert(`Pokemon ${action.payload.name} creado con éxito`);
             return {
             ...state,
             pokemons: [...state.pokemons, action.payload],

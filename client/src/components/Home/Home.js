@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import { getAllPokemons,  getAllTypes,} from '../../Redux/actions/index'
 import Card from '../Card/Card'
 import Paginado from '../Paginado/Paginado'
-import Error404 from "../ErroMsj/ErrorMsj";
+import Error404 from "../ErrorMsj/ErrorMsj";
 import style from './Home.module.css';
 import Loading from '../Loading/Loading'
 import Filters from '../Filters/Filters'
