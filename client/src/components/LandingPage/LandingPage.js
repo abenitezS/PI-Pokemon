@@ -1,6 +1,6 @@
 import React from "react";
 import {Link }  from "react-router-dom";
-import titulo from "../img/tituloPokemon.png"
+import titulo from "../../img/tituloPokemon.png"
 import style from "./LandingPage.module.css"
 export default function LandingPage(){
     return (

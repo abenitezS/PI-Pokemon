@@ -4,9 +4,9 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory,Link } from 'react-router-dom';
 import { cleanCacheAll, createPokemon, getAllPokemons,
-     getAllTypes } from './actions';
+     getAllTypes } from '../../Redux/actions/index.js'
 import style from "./CrearPokemon.module.css";
-import Loading from './Loading'
+import Loading from '../Loading/Loading'
 
 export default function CrearPokemon() {
     let [input, setInput] = useState({
@@ -65,7 +65,7 @@ export default function CrearPokemon() {
             image: "",
             types: []
         })     
-    history.push(`/home`);
+   // history.push(`/home`);
     }
     let handleBack=(e) =>{
         e.preventDefault();

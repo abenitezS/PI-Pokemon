@@ -3,8 +3,8 @@ import {NavLink, Route, } from "react-router-dom";
 import { configure, shallow } from "enzyme";
 import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
 import isReact from "is-react";
-import NavBar from "../components/NavBar";
-import SearchBar from "../components/SearchBar";
+import NavBar from "../components/NaBar/NavBar";
+import SearchBar from "../components/SearchBar/SearchBar";
 
 configure({ adapter: new Adapter() });
 

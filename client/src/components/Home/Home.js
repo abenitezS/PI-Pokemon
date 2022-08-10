@@ -1,13 +1,13 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import { getAllPokemons,  getAllTypes,} from '../components/actions/index'
-import Card from '../components/Card'
-import Paginado from './Paginado'
-import Error404 from "./ErrorMsj";
+import { getAllPokemons,  getAllTypes,} from '../../Redux/actions/index'
+import Card from '../Card/Card'
+import Paginado from '../Paginado/Paginado'
+import Error404 from "../ErroMsj/ErrorMsj";
 import style from './Home.module.css';
-import Loading from './Loading'
-import Filters from './Filters'
+import Loading from '../Loading/Loading'
+import Filters from '../Filters/Filters'
 
 
 export default function Home() {

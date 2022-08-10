@@ -1,8 +1,8 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import error404 from "../img/not_found.jpg"
-import { cleanCache } from './actions'
+import error404 from "../../img/not_found.jpg"
+import { cleanCache } from '../../Redux/actions'
 import style from "./ErrorMsj.module.css"
 
 export default function Error404() {

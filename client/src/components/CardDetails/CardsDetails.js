@@ -1,10 +1,10 @@
 import React from 'react'
 import {Link,useHistory, useParams} from "react-router-dom"
 import {useDispatch,useSelector} from "react-redux"
-import { getPokemonById,cleanCache ,cleanCacheAll,deletePokemon, getAllPokemons} from './actions/index'
+import { getPokemonById,cleanCache ,cleanCacheAll,deletePokemon, getAllPokemons} from '../../Redux/actions/index'
 import  style from './CardDetails.module.css'
-import ErrorMsj from './ErrorMsj'
-import Loading from './Loading'
+import ErrorMsj from '../ErrorMsj/ErrorMsj'
+import Loading from '../Loading/Loading'
 
 
 export default function CardDetail(){

@@ -11,7 +11,7 @@ import {
     FILTER_TYPE, 
     FILTER_CREATED_API,
     DELETE_POKEMON
-     } from "../components/actions/index.js"
+     } from "../actions/index.js"
 
 const initialState = {
     pokemons: [],
