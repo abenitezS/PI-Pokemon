@@ -25,13 +25,14 @@ console.log(alltypes )
 
 //estados para el paginado 
 const[currentPage,setCurrentPage]=useState(1)  // mi pagina actual que arranca en 1
-const[pokemonsPerPage,]=useState(12) // pokemons por pagina siempre seran 12
+const[pokemonsPerPage,/*setPokemonsPerPague*/]= useState(12) ;   // pokemons por pagina siempre seran 12
 const indexOfLastPokemons=currentPage * pokemonsPerPage //12
 const indexOfFirstPokemons= indexOfLastPokemons - pokemonsPerPage //0
 const currentPokemons=allPokemons.slice(indexOfFirstPokemons,indexOfLastPokemons)// me da los pokemons  para mi pagina actual
 
 const paginado = (pageNumber)=>{  // me va a servit para el renderizado
   setCurrentPage(pageNumber)
+//   setPokemonsPerPague(pageNumber===1? 9 : 10)
 }
 
 const filtrado =(description)=>{  // me va a servit para el renderizado

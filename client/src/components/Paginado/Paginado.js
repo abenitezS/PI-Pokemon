@@ -10,7 +10,8 @@ export default function Paginado({pokemonsPerPage, allPokemons, paginado,current
     return (
         <nav className={style.contenedorPaginado}>
             <div className={style.pag_ul} >
-                <button className={style.btnPagination} disabled={currentPage - 1===0} onClick={()=>paginado(currentPage-1)}> {`<<`}</button>
+                <button className={style.btnPagination} disabled={currentPage - 1===0} onClick={()=>paginado(1)}> {`<<`}</button>
+                <button className={style.btnPagination} disabled={currentPage - 1===0} onClick={()=>paginado(currentPage-1)}> {`<`}</button>
                 {pageNumbers && 
                 pageNumbers.map(number=> (
                     <div className={style.pag_a} key={number}>
@@ -19,7 +20,8 @@ export default function Paginado({pokemonsPerPage, allPokemons, paginado,current
                         style.btnPagination} onClick={()=>paginado(number)}>{number}</button>
                     </div>
                 ))}
-                <button className={style.btnPagination} disabled={currentPage === totalPages } onClick={()=>paginado(currentPage + 1)}> {`>>`}</button>
+                <button className={style.btnPagination} disabled={currentPage === totalPages } onClick={()=>paginado(currentPage + 1)}> {`>`}</button>
+                <button className={style.btnPagination} disabled={currentPage === totalPages } onClick={()=>paginado(totalPages)}> {`>>`}</button>
             </div>
         </nav>
     )
