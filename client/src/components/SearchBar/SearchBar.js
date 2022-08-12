@@ -49,6 +49,10 @@ return (
         <button onClick={() => history.push("/pokemon")} className={style.buttonCrear}>Crear Pokémon</button>
       </div>
 
+      <div className={style.contenedorButtonCrear}>
+        <button onClick={() => history.push("/about")} className={style.buttonCrear}>About</button>
+      </div>
+
       { pokemon.error? <Redirect to={`/home/${pokemon.error}`} /> : pokemon.id &&  <Redirect to={`/home/${pokemon.id}`} />}
       {/* { pokemon.id &&  <Redirect to={`/home/${pokemon.id}`} />}  */}
 

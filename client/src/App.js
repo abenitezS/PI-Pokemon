@@ -6,14 +6,15 @@ import LandingPage from './components/LandingPage/LandingPage.js';
 import CreatePokemon from '../src/components/CreatePokemon/CreatePokemon';
 import CardsDetails from './components/CardDetails/CardsDetails';
 import NavBar from './components/NaBar/NavBar.js';
+import About from './components/About/About.js';
 function App() {
   return (
    <BrowserRouter>
    <div> 
     <Switch >
-      
+       
       <Route  path="/home/:id">
-        <NavBar /> 
+       
         <CardsDetails/>
       </Route>
       
@@ -26,12 +27,19 @@ function App() {
         <NavBar /> 
         <CreatePokemon/>
       </Route>
-      
-       <Route exact path="/" component={LandingPage}/>
 
-      <Route path="*" component={LandingPage}/>
+      <Route path={'/about'}>
+        <NavBar/>
+        <About/>
+      </Route>
+
+      <Route exact path="/" component={LandingPage}/>
+
+       <Route path="*" component={LandingPage}/>
     </Switch>
-    
+      
+
+      
         
     </div>
    </BrowserRouter>     
