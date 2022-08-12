@@ -14,7 +14,7 @@ function App() {
     <Switch >
        
       <Route  path="/home/:id">
-       
+      <NavBar/>
         <CardsDetails/>
       </Route>
       

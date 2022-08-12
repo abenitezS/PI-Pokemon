@@ -1,3 +1,18 @@
+
+.containerBack{
+    display :flex;
+    flex-wrap: wrap;
+    background-color: aliceblue;
+    padding-right: 1em;
+    }
+
+ .titulo{
+    padding-right: 3em;
+    color:rgb(88, 67, 163);
+        margin: auto
+    }
+   
+
 .contenedor404 {
     text-align: center;
     display: flex;
@@ -17,17 +32,19 @@
 .error404 {
     width: 12.4rem;
 }
-.buttonBack {
-    cursor: pointer;
-    width: 9rem ;
+.buttonReset {
+    width: 9rem;
     height: 1.9rem;
+    font-weight:bold;
+    cursor: pointer;
+    margin-top: 0.7em;
+    margin-bottom: 0.5em;
     border-radius: 1rem;
-    transition: .3s;
-    border:none;
+    border: none;
     background-color: darkgrey;
-    font-weight: bold;
     color:rgb(88, 67, 163)
+   
 }
-.buttonBack:hover {
-    background-color:#1c7aa9b5
-}
+.buttonReset:hover {
+    background-color:#1589c384 
+ }
