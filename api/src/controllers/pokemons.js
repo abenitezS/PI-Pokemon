@@ -198,7 +198,7 @@ router.delete("/:id", async (req, res, next) => {
 // })
 
 router.patch("/:id", async (req, res, next) => {
-  let { name, hp, attack, defense, speed, height, weight, image, type } =
+  let { name, hp, attack, defense, speed, height, weight, image} =
     req.body;
   let { id } = req.params;
   if (
@@ -209,7 +209,7 @@ router.patch("/:id", async (req, res, next) => {
   ) {
     image = "https://img.icons8.com/clouds/500/pokemon-go.png";
   }
-  if (!type || type.length === 0) type = [10001];
+ 
   try {
     name = name.toLowerCase();
     let pokemon = {
@@ -220,11 +220,12 @@ router.patch("/:id", async (req, res, next) => {
       speed,
       height,
       weight,
-      image,
-      type,
+      image
+     
     };
-    await Pokemon.update({ pokemon }, { where: { id: id } });
-    return req.send(pokemon);
+   let  updatepokemon=await Pokemon.update( pokemon , { where: { id: id } });
+    return res.status(200).json(updatepokemon);//devuelve 1 los datos con get los devuelvo
+  
   } catch (error) {
     next(error);
   }
