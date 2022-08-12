@@ -94,17 +94,21 @@ const rootReducer = (state = initialState, action) => {
         case ORDER_ALPHABET:
             let pokesAlpha=state.pokemons;
             if (action.payload === "asc") {
-                pokesAlpha = pokesAlpha.sort((a, b) => {
-                    if (a.name > b.name) return 1;
-                    if (b.name > a.name) return -1;
-                    return 0;
-                });
+                pokesAlpha = pokesAlpha.sort((a, b) => a.name.localeCompare(b.name)
+                //{
+                //     if (a.name > b.name) return 1;
+                //     if (b.name > a.name) return -1;
+                //     return 0;
+                // }
+                );
             } else {
-                pokesAlpha = pokesAlpha.sort((a, b) => {
-                    if (a.name > b.name) return -1;
-                    if (b.name > a.name) return 1;
-                    return 0;
-                });
+                pokesAlpha = pokesAlpha.sort((a, b) =>b.name.localeCompare(a.name)
+                //  {
+                //     if (a.name > b.name) return -1;
+                //     if (b.name > a.name) return 1;
+                //     return 0;
+                // }
+                );
             }
             // console.log(pokesAlpha)
             return {
@@ -115,17 +119,13 @@ const rootReducer = (state = initialState, action) => {
             case ORDER_ATTACK:
                 let pokesAttack=state.pokemons;
                 if (action.payload === "asc") {
-                    pokesAttack = pokesAttack.sort((a, b) => {
-                        if (a.attack > b.attack) return 1;
-                        if (b.attack > a.attack) return -1;
-                        return 0;
-                    });
+                    pokesAttack = pokesAttack.sort((a, b) => a.attack -b.attack
+                  
+                    );
                 } else {
-                    pokesAttack = pokesAttack.sort((a, b) => {
-                        if (a.attack > b.attack) return -1;
-                        if (b.attack > a.attack) return 1;
-                        return 0;
-                    });
+                    pokesAttack = pokesAttack.sort((a, b) => b.attack -a.attack
+                        
+                    );
                 }
                 // console.log(pokesAttack)
                 return {
@@ -145,7 +145,7 @@ const rootReducer = (state = initialState, action) => {
                 }
             }
             let pokesType = state.pokemons.filter(p => {
-                if (p.createdInDB) { if ( p.types.find( p=>p.name === action.payload))return p}         
+                if (p.createdInDB) { if ( p.types.some( p=>p.name === action.payload))return p}         
                 return p.types.includes(action.payload)
                 }
             );

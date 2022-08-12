@@ -29,15 +29,19 @@ let cleanAndBack = () => {
   };
 
 let handleDelete = () => {
-     dispatch(deletePokemon(id));
+  let answer = window.confirm("¿Esta seguro de eliminar este Pokemon ?");
+        if (answer) {
+          dispatch(deletePokemon(id));
     dispatch(cleanCache());
     dispatch(cleanCacheAll());
     dispatch(getAllPokemons())
-     history.push("/home");
+    history.push("/home");
     alert("Pokémon se ha eliminado");
+        }
     
     
-  }
+   }
+  
  
 let i=0;
 return(
