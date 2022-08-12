@@ -3,7 +3,7 @@
     min-width: 30rem;
     color: rgb(0, 0, 0);
     text-align: center;
-    background-color: #1971c9d3;
+    background-color: #1971c93a;
    
 }
 
@@ -13,6 +13,7 @@
 }
 
 .image{
-    width:15rem;
-    height:5rem;
+    width:17rem;
+    height:7rem;
+   border-radius: 2rem;
 }

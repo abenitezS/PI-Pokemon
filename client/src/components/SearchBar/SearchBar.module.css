@@ -34,6 +34,8 @@
 .buttonSearch:not(:disabled):hover {
     background-color: #e3e6e6b9
 }
+
+
 .icon{
     margin: none;
     background-color: rgba(255, 255, 255, 0.795);
@@ -66,6 +68,9 @@
 .input::placeholder {
     color: rgba(0, 0, 0, 0.767);
 }
+input:focus{
+    outline: none;
+  }
 
 .inputSearch:focus {
     outline: none;

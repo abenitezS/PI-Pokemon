@@ -16,9 +16,11 @@
   font-size: 4rem;  
 }
 .logo {
-    width: 50rem;
-    height: 6rem;
-    
+    width: 25rem;
+    height: 10rem;
+    margin-top: 10rem;
+  
+    border-radius: 10rem;
 }
 
 .btnIngresar {

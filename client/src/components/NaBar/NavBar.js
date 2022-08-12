@@ -1,6 +1,6 @@
 import React from 'react'
 import SearchBar from '../SearchBar/SearchBar'
-import titulo from '../../img/tituloPokemon.png'
+import titulo from '../../img/logo_navbar.jpg'
 import { Switch, Route, NavLink } from 'react-router-dom'
 import style from './NavBar.module.css'
 
