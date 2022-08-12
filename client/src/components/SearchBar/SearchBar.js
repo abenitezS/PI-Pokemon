@@ -4,7 +4,7 @@ import {useDispatch,useSelector} from 'react-redux'
 import {getPokemonByName} from '../../Redux/actions'
 import { Redirect,useHistory} from "react-router-dom";
 import style from './SearchBar.module.css'
-
+import {FcSearch} from 'react-icons/fc'
 
 
 export default function SearchBar () {
@@ -33,25 +33,33 @@ export default function SearchBar () {
 
 return (
     <div className={style.contenedorSearchbar}>
-     
-
-      <form className={style.contenedorButtonSearch} onSubmit={(e) => handleSubmit(e)}>
-        <input className={style.inputSearch}
-          type="text"
-          placeholder="Buscar..."
-          onChange={e=>handleInputChange(e)}
-        />
-          <button disabled={name.length === 0} type="submit" className={style.buttonSearch}>Buscar</button>
-
-      </form>
-
-       <div className={style.contenedorButtonCrear}>
-        <button onClick={() => history.push("/pokemon")} className={style.buttonCrear}>Crear Pokémon</button>
-      </div>
 
       <div className={style.contenedorButtonCrear}>
         <button onClick={() => history.push("/about")} className={style.buttonCrear}>About</button>
       </div>
+
+      <div className={style.contenedorButtonCrear}>
+        <button onClick={() => history.push("/pokemon")} className={style.buttonCrear}>Crear Pokémon</button>
+      </div>
+
+      <form className={style.contenedorForm} onSubmit={(e) => handleSubmit(e)}>
+        
+         
+          <div className={style.inputSearch}>
+             <FcSearch />
+           <input 
+             type="text"
+             placeholder="Buscar..."
+            onChange={e=>handleInputChange(e)}
+             />
+        </div>
+        
+         
+          <button disabled={name.length === 0} type="submit" className={style.buttonSearch}>Buscar</button>
+
+      </form>
+
+      
 
       { pokemon.error? <Redirect to={`/home/${pokemon.error}`} /> : pokemon.id &&  <Redirect to={`/home/${pokemon.id}`} />}
       {/* { pokemon.id &&  <Redirect to={`/home/${pokemon.id}`} />}  */}
