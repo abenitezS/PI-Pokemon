@@ -34,8 +34,8 @@ let handleDelete = () => {
           dispatch(deletePokemon(id));
     dispatch(cleanCache());
     dispatch(cleanCacheAll());
-    dispatch(getAllPokemons())
     history.push("/home");
+    window.location.reload()
     alert("Pokémon se ha eliminado");
         }
     

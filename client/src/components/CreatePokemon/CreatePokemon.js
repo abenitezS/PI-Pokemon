@@ -50,9 +50,9 @@ export default function CrearPokemon() {
     async function handleSubmit(e)  {
            e.preventDefault();
         //    input.name=5555
-      await  dispatch(createPokemon(input));
+        dispatch(createPokemon(input));
         dispatch(cleanCacheAll)
-       await dispatch(getAllPokemons)
+        dispatch(getAllPokemons)
         alert (`Pokemon ${input.name} creado`);
         setInput({
             name: "",
@@ -69,8 +69,9 @@ export default function CrearPokemon() {
     }
     let handleBack=(e) =>{
         e.preventDefault();
-        
+        dispatch(cleanCacheAll)
      history.push("/home");
+     window.location.reload()
     } 
 
   
