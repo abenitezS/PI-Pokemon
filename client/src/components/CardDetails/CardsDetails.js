@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link,useHistory, useParams} from "react-router-dom"
 import {useDispatch,useSelector} from "react-redux"
-import { getPokemonById,cleanCache ,cleanCacheAll,deletePokemon, getAllPokemons} from '../../Redux/actions/index'
+import { getPokemonById,cleanCache ,cleanCacheAll,deletePokemon} from '../../Redux/actions/index'
 import  style from './CardDetails.module.css'
 import ErrorMsj from '../ErrorMsj/ErrorMsj'
 import Loading from '../Loading/Loading'

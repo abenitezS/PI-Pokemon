@@ -40,14 +40,14 @@ const filtrado =(description)=>{  // me va a servit para el renderizado
 }
 
 useEffect(()=>{
- if (allPokemons.length<2) dispatch(getAllPokemons())
+  dispatch(getAllPokemons())
   dispatch(getAllTypes())},[dispatch]
   )
 
 return(
   pokemon.error ?
     <Error404 /> :
-     allPokemons.length<2 ?
+     allPokemons.length<1 ?
      <Loading/>
      :
    <div>  
