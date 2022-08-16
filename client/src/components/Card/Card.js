@@ -9,7 +9,7 @@ import style from './Card.module.css'
            <Link  className={style.navlink} to={`/home/${idPokemon} `}>
              <h5>{idPokemon}</h5>
               <h3 className={style.nombreCard} >{name.toUpperCase()}</h3> 
-               <img className={style.imagenCard} src={image} alt='img not found' />  
+               <img className={style.imagenCard} src={image} alt='img not found' />  <br/>
               { types?.map((t) => {
               i++;
               return <div key={i}  className={style.typesCard}> {t} </div>;
